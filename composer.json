@@ -1,0 +1,42 @@
+{
+    "name": "markwalet/laravel-hashed-route",
+    "description": "A Laravel package that replaces the default route model binding for a safer version.",
+    "keywords": ["laravel", "id", "hash", "url", "security"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark Walet",
+            "email": "mark.walet@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "hashids/hashids": "^2.0",
+        "illuminate/database": "^5.5",
+        "illuminate/support": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "MarkWalet\\LaravelHashedRoute\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MarkWalet\\LaravelHashedRoute\\HashedRouteServiceProvider"
+            ]
+        }
+    }
+}
