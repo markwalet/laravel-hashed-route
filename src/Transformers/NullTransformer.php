@@ -2,17 +2,15 @@
 
 namespace MarkWalet\LaravelHashedRoute\HashGenerators;
 
-class NullHashGenerator implements HashGenerator
+class NullTransformer implements Transformer
 {
-    use GeneratesHashForModel;
-
     /**
      * Generate a hash for a given id.
      *
      * @param int $id
      * @return int
      */
-    public function generate(int $id)
+    public function encode(int $id)
     {
         return $id;
     }

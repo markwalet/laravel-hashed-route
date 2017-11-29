@@ -4,10 +4,8 @@ namespace MarkWalet\LaravelHashedRoute\HashGenerators;
 
 use Hashids\Hashids;
 
-class HashidsHashGenerator implements HashGenerator
+class HashidsTransformer implements Transformer
 {
-    use GeneratesHashForModel;
-
     /**
      * List of allowed characters in the hash.
      *
@@ -39,7 +37,7 @@ class HashidsHashGenerator implements HashGenerator
      * @param int $id
      * @return int|string
      */
-    public function generate(int $id)
+    public function encode(int $id)
     {
         return $this->hashids->encode($id);
     }
