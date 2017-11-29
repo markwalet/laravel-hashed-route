@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace MarkWalet\LaravelHashedRoute\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 use MarkWalet\LaravelHashedRoute\Concerns\HasHashedKey;
@@ -20,7 +20,7 @@ class TestModel extends Model
      * Make a new testable model wit.
      *
      * @param integer|null $id
-     * @return \Tests\TestModel
+     * @return \MarkWalet\LaravelHashedRoute\Tests\TestModel
      */
     public static function make($id = null) {
         return new self([

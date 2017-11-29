@@ -1,10 +1,8 @@
 <?php
 
-namespace Tests\HashGenerator;
+namespace MarkWalet\LaravelHashedRoute\Tests\Transformers;
 
-use MarkWalet\LaravelHashedRoute\Exceptions\InvalidModelException;
-use MarkWalet\LaravelHashedRoute\HashGenerators\Transformer;
-use Tests\TestModel;
+use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
 
 trait TransformerTests
 {
@@ -16,7 +14,7 @@ trait TransformerTests
     public abstract function generator();
 
     /** @test */
-    public function hashes_for_the_same_model_id_are_the_same()
+    public function hashes_for_the_same_key_are_the_same()
     {
         $generator = $this->generator();
 

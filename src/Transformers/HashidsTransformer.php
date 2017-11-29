@@ -1,6 +1,6 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\HashGenerators;
+namespace MarkWalet\LaravelHashedRoute\Transformers;
 
 use Hashids\Hashids;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\HashGenerator;
+namespace MarkWalet\LaravelHashedRoute\Tests\Transformers;
 
-use MarkWalet\LaravelHashedRoute\HashGenerators\Transformer;
-use MarkWalet\LaravelHashedRoute\HashGenerators\HashidsTransformer;
+use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
+use MarkWalet\LaravelHashedRoute\Transformers\HashidsTransformer;
 use PHPUnit\Framework\TestCase;
 
 class HashidsTransformerTest extends TestCase
