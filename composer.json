@@ -13,12 +13,12 @@
     "require": {
         "php": ">=5.5.9",
         "hashids/hashids": "^2.0",
-        "illuminate/config": "~5.4",
-        "illuminate/database": "~5.4",
-        "illuminate/support": "~5.4"
+        "illuminate/config": "~5.5",
+        "illuminate/database": "~5.5",
+        "illuminate/support": "~5.5"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.4",
+        "orchestra/testbench": "~3.5",
         "phpunit/phpunit": "^6.0"
     },
     "autoload": {
