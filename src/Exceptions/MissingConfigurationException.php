@@ -4,6 +4,6 @@ namespace MarkWalet\LaravelHashedRoute\Exceptions;
 
 use Exception;
 
-class MissingDriverException extends Exception
+class MissingConfigurationException extends Exception
 {
 }

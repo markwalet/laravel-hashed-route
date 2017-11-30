@@ -2,11 +2,9 @@
 
 namespace MarkWalet\LaravelHashedRoute\Tests\Transformers;
 
-use Hashids\Hashids;
 use InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 use MarkWalet\LaravelHashedRoute\Transformers\NullTransformer;
-use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
 use MarkWalet\LaravelHashedRoute\Transformers\HashidsTransformer;
 use MarkWalet\LaravelHashedRoute\Transformers\TransformerFactory;
 use PHPUnit\Framework\TestCase;

@@ -46,4 +46,18 @@ class HashidsTransformerTest extends TestCase
 
         $this->assertTrue(strlen($hash) >= 100);
     }
+
+    /** @test */
+    public function can_configure_alphabet()
+    {
+        $generator = new HashidsTransformer([
+            'salt' => 'randomSalt',
+            'minimum_length' => 100,
+            'alphabet' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        ]);
+
+        $hash = $generator->encode(14);
+
+        $this->assertRegExp('/^[A-Z]*$/', $hash);
+    }
 }

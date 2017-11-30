@@ -47,16 +47,11 @@ trait HasHashedRouteKey
     }
 
     /**
-     * Retrieve the model for a bound value.
+     * Get the hashed key attribute.
      *
-     * @param  mixed $value
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @return int|string
+     * @throws \MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException
      */
-    public function resolveRouteBinding($value)
-    {
-        return $this->where($this->getRouteKeyName(), $value)->first();
-    }
-
     public function getHashedKeyAttribute()
     {
         if ($this->getKeyType() !== 'int') {
@@ -81,7 +76,7 @@ trait HasHashedRouteKey
      *
      * @return string
      */
-    protected function getTransformerName(): string
+    public function getTransformerName(): string
     {
         return $this->transformer ?? config('hashed-route.default');
     }
@@ -92,7 +87,7 @@ trait HasHashedRouteKey
      * @param string $transformer
      * @return $this
      */
-    public function setTransformer(string $transformer)
+    public function setTransformer(string $transformer = null)
     {
         $this->transformer = $transformer;
 
