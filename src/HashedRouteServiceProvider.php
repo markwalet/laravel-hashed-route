@@ -17,7 +17,7 @@ class HashedRouteServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/hashed-route.php', 'hashed-url'
+            __DIR__.'/../config/hashed-route.php', 'hashed-route'
         );
 
         $this->app->bind(HashedRouteManager::class, function($app) {
