@@ -19,8 +19,6 @@ class HashidsTransformer implements Transformer
      * Boot the transformer up.
      *
      * @param array $config
-     *
-     * @param array $config
      */
     public function __construct(array $config = [])
     {

@@ -46,7 +46,7 @@ class TransformerFactory
      */
     protected function createTransformer(string $driver, array $config): Transformer
     {
-        switch($driver) {
+        switch ($driver) {
             case 'null':
                 return new NullTransformer($config);
             case 'hashids':

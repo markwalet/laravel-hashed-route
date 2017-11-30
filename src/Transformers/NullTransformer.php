@@ -4,11 +4,8 @@ namespace MarkWalet\LaravelHashedRoute\Transformers;
 
 class NullTransformer implements Transformer
 {
-
     /**
      * Boot the transformer up.
-     *
-     * @param array $config
      *
      * @param array $config
      */
@@ -26,6 +23,7 @@ class NullTransformer implements Transformer
     {
         return $id;
     }
+
     /**
      * Decode a has back to an id.
      *
@@ -34,6 +32,6 @@ class NullTransformer implements Transformer
      */
     public function decode($hash): int
     {
-        return (int)$hash;
+        return (int) $hash;
     }
 }

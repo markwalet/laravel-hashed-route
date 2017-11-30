@@ -9,7 +9,6 @@ use MarkWalet\LaravelHashedRoute\Transformers\TransformerFactory;
 
 class HashedRouteServiceProvider extends ServiceProvider
 {
-
     /**
      * Register bindings in the container.
      *
@@ -17,9 +16,7 @@ class HashedRouteServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/hashed-route.php', 'hashed-route'
-        );
+        $this->mergeConfigFrom(__DIR__.'/../config/hashed-route.php', 'hashed-route');
 
         $this->registerHashedRouteServices();
     }
@@ -33,13 +30,13 @@ class HashedRouteServiceProvider extends ServiceProvider
         $this->app->bind(TransformerFactory::class, TransformerFactory::class);
 
         // Bind hashed route manager to application.
-        $this->app->bind(HashedRouteManager::class, function($app) {
+        $this->app->bind(HashedRouteManager::class, function ($app) {
             /** @var Application $app */
             return new HashedRouteManager($app, $this->app->make(TransformerFactory::class));
         });
 
         // Bind default transformer to application.
-        $this->app->bind(Transformer::class, function($app) {
+        $this->app->bind(Transformer::class, function ($app) {
             /** @var Application $app */
             return $app->make(HashedRouteManager::class)->transformer();
         });
