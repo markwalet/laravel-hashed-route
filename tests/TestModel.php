@@ -3,11 +3,11 @@
 namespace MarkWalet\LaravelHashedRoute\Tests;
 
 use Illuminate\Database\Eloquent\Model;
-use MarkWalet\LaravelHashedRoute\Concerns\HasHashedKey;
+use MarkWalet\LaravelHashedRoute\Concerns\HasHashedRouteKey;
 
 class TestModel extends Model
 {
-    use HasHashedKey;
+    use HasHashedRouteKey;
 
     /**
      * Indicates if all mass assignment is enabled.

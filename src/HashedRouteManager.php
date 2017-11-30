@@ -43,7 +43,7 @@ class HashedRouteManager
 
     /**
      * @param string|null $name
-     * @return \MarkWalet\LaravelHashedRoute\Transformers\Transformer|mixed
+     * @return \MarkWalet\LaravelHashedRoute\Transformers\Transformer
      */
     public function transformer(string $name = null)
     {
@@ -75,12 +75,12 @@ class HashedRouteManager
         $transformers = $this->app['config']['hashed-route.transformers'];
 
         // Throw exception when configuration is not found.
-        if (array_key_exists($name, $transformers)) {
+        if (array_key_exists($name, $transformers) === false) {
             throw new InvalidArgumentException("Transformer [$name] not configured.");
         }
 
         // Return transformer configuration.
-        return $transformers[$name];
+        return array_add($transformers[$name], 'name', $name);
     }
 
     /**

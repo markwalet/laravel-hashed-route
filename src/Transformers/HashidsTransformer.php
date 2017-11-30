@@ -26,8 +26,9 @@ class HashidsTransformer implements Transformer
     {
         $this->require(['salt', 'minimum_length'], $config);
 
-
-        $this->hashids = new Hashids(...array_values(array_only($config, ['salt', 'minimum_length', 'alphabet'])));
+        $this->hashids = (isset($config['alphabet']))
+            ? new Hashids($config['salt'], $config['minimum_length'], $config['alphabet'])
+            : new Hashids($config['salt'], $config['minimum_length']);
     }
 
     /**
