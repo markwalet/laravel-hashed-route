@@ -5,7 +5,7 @@ namespace MarkWalet\LaravelHashedRoute\Exceptions;
 use Exception;
 use Throwable;
 
-class InvalidModelException extends Exception
+class InvalidArgumentException extends Exception
 {
     /**
      * InvalidModelException constructor.

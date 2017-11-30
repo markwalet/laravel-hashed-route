@@ -6,29 +6,28 @@ use Hashids\Hashids;
 
 class HashidsTransformer implements Transformer
 {
-    /**
-     * List of allowed characters in the hash.
-     *
-     * @var string
-     */
-    protected $alphabet = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    use RequiresConfigurationKeys;
 
     /**
      * Hashids instance.
      *
-     * @var \Hashids\Hashids
+     * @var Hashids
      */
     private $hashids;
 
     /**
-     * HashidsHashGenerator constructor.
+     * Boot the transformer up.
      *
-     * @param string $salt
-     * @param int $length
+     * @param array $config
+     *
+     * @param array $config
      */
-    public function __construct(string $salt, int $length = 10)
+    public function __construct(array $config = [])
     {
-        $this->hashids = new Hashids($salt, $length, $this->alphabet);
+        $this->require(['salt', 'minimum_length'], $config);
+
+
+        $this->hashids = new Hashids(...array_values(array_only($config, ['salt', 'minimum_length', 'alphabet'])));
     }
 
     /**

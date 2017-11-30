@@ -4,6 +4,18 @@ namespace MarkWalet\LaravelHashedRoute\Transformers;
 
 class NullTransformer implements Transformer
 {
+
+    /**
+     * Boot the transformer up.
+     *
+     * @param array $config
+     *
+     * @param array $config
+     */
+    public function __construct(array $config = [])
+    {
+    }
+
     /**
      * Generate a hash for a given id.
      *

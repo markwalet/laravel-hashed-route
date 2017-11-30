@@ -13,6 +13,7 @@
     "require": {
         "php": "^7.0",
         "hashids/hashids": "^2.0",
+        "illuminate/config": "^5.5",
         "illuminate/database": "^5.5",
         "illuminate/support": "^5.5"
     },
@@ -26,7 +27,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "MarkWalet\\LaravelHashedRoute\\Tests\\": "tests/"
         }
     },
     "config": {
