@@ -45,9 +45,12 @@ class HashidsTransformer implements Transformer
      *
      * @param string|int $hash
      * @return int
+     * @return int|null
      */
-    public function decode($hash): int
+    public function decode($hash)
     {
-        return $this->hashids->decode($hash)[0];
+        $results = $this->hashids->decode($hash);
+
+        return (count($results) > 0) ? (int) $results[0] : null;
     }
 }

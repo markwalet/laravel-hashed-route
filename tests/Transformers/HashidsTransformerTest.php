@@ -60,4 +60,14 @@ class HashidsTransformerTest extends TestCase
 
         $this->assertRegExp('/^[A-Z]*$/', $hash);
     }
+
+    /** @test */
+    public function invalid_hash_decodes_to_null()
+    {
+        $transformer = new HashidsTransformer(['salt' => 'randomSalt', 'minimum_length' => 10]);
+
+        $result = $transformer->decode('rubbish');
+
+        $this->assertNull($result);
+    }
 }

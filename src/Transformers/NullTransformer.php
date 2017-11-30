@@ -28,9 +28,9 @@ class NullTransformer implements Transformer
      * Decode a has back to an id.
      *
      * @param string|int $hash
-     * @return int
+     * @return int|null
      */
-    public function decode($hash): int
+    public function decode($hash)
     {
         return (int) $hash;
     }

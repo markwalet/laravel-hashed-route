@@ -36,6 +36,17 @@ trait HasHashedRouteKey
     }
 
     /**
+     * Retrieve the model for a bound value.
+     *
+     * @param  mixed $value
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
+    public function resolveRouteBinding($value)
+    {
+        return $this->where($this->getRouteKeyName(), $this->getTransformer()->decode($value))->first();
+    }
+
+    /**
      * Resolve a connection instance.
      *
      * @param string|null $transformer
