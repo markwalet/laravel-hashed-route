@@ -47,6 +47,16 @@ trait HasHashedRouteKey
     }
 
     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'hashed_key';
+    }
+
+    /**
      * Resolve a connection instance.
      *
      * @param string|null $transformer

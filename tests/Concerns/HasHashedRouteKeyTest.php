@@ -2,7 +2,9 @@
 
 namespace MarkWalet\LaravelHashedRoute\Tests\Concerns;
 
+use Illuminate\Support\Facades\Route;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
+use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;
 
@@ -45,5 +47,19 @@ class HasHashedRouteKeyTest extends LaravelTestCase
 
         $this->expectException(UnsupportedKeyTypeException::class);
         $model->hashed_key;
+    }
+
+    /** @test */
+    public function rendering_route_will_use_a_hash_as_default()
+    {
+        $model = TestModel::make(143);
+        $model->setTransformer('hashids');
+        Route::get('test/{testModel}', function() {
+        })->name('test');
+        $expectedHash = $this->app->make(HashedRouteManager::class)->transformer('hashids')->encode(143);
+
+        $url = route('test', $model);
+
+        $this->assertEquals('http://localhost/test/' . $expectedHash, $url);
     }
 }
