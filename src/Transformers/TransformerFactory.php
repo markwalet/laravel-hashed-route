@@ -24,10 +24,9 @@ class TransformerFactory
      * Append name to configuration.
      *
      * @param array $config
-     * @param string|null $name
      * @return array
      */
-    protected function parseConfiguration(array $config, string $name = null): array
+    protected function parseConfiguration(array $config): array
     {
         // Throw exception when no driver is given.
         if (isset($config['driver']) === false) {

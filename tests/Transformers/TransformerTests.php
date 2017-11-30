@@ -34,4 +34,15 @@ trait TransformerTests
 
         $this->assertNotEquals($hash1, $hash2);
     }
+
+    /** @test */
+    public function can_decode_hash()
+    {
+        $generator = $this->generator();
+
+        $encoded = $generator->encode(147);
+        $decoded = $generator->decode($encoded);
+
+        $this->assertEquals(147, $decoded);
+    }
 }
