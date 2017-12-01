@@ -34,7 +34,9 @@ class TestModel extends Model
 }
 ```
 
-After that you can use the model like you normally would. When using the `route()` or `action()` helper method you can just use the model itself as a parameter. When you want to manually construct the url, you can use the `hashed_key` property that is appended on the model.
+After that you can use the model like you normally would. Because the trait overrides the `resolveRouteBinding()` and `getRouteKey()` methods, no extra changes are required to your code.
+
+You do have to change your code when you are building your urls by manually getting the `$model->id` property from your model. Then you will have to change those calls to `$model->getRouteKey()`.
 
 ## Configuration
 The default configuration is defined in `hashed-route.php`. If you want to edit this file you can copy it to your config folder by using the following command:
