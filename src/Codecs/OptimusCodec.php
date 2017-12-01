@@ -54,7 +54,8 @@ class OptimusCodec implements Codec
      */
     public function decode($hash)
     {
-        if (is_int($hash) === false) {
+        // Return null if key is not numeric.
+        if (is_numeric($hash) === false) {
             return null;
         }
 
