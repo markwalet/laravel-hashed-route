@@ -6,7 +6,6 @@ use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
-use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use PHPUnit\Framework\TestCase;
 
 class HashidsCodecTest extends TestCase
@@ -52,6 +51,7 @@ class HashidsCodecTest extends TestCase
     /** @test */
     public function can_configure_alphabet()
     {
+        /** @noinspection SpellCheckingInspection */
         $generator = new HashidsCodec([
             'salt' => 'randomSalt',
             'minimum_length' => 100,

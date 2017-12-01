@@ -55,7 +55,7 @@ class HashedRouteManager
     public function codec(string $name = null)
     {
         // Set the name to default when null.
-        $name = $name ?: $this->getDefaulCodec();
+        $name = $name ?: $this->getDefaultCodec();
 
         // Get configuration.
         $configuration = $this->configuration($name);
@@ -95,7 +95,7 @@ class HashedRouteManager
      *
      * @return string
      */
-    public function getDefaulCodec(): string
+    public function getDefaultCodec(): string
     {
         return $this->app['config']['hashed-route.default'];
     }

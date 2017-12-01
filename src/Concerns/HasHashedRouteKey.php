@@ -2,7 +2,6 @@
 
 namespace MarkWalet\LaravelHashedRoute\Concerns;
 
-use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 
 /**

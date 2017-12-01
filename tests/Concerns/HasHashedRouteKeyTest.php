@@ -3,7 +3,6 @@
 namespace MarkWalet\LaravelHashedRoute\Tests\Concerns;
 
 use Illuminate\Support\Facades\Route;
-use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;

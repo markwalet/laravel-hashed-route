@@ -3,10 +3,8 @@
 namespace MarkWalet\LaravelHashedRoute\Tests;
 
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
-use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
-use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 
 class HashedRouteServiceProviderTest extends LaravelTestCase
 {

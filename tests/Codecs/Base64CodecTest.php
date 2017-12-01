@@ -5,9 +5,6 @@ namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 use MarkWalet\LaravelHashedRoute\Codecs\Base64Codec;
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
-use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
-use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
-use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use PHPUnit\Framework\TestCase;
 
 class Base64CodecTest extends TestCase

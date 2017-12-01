@@ -32,7 +32,7 @@ class HashedRouteManagerTest extends LaravelTestCase
         $codec = $manager->codec();
 
         $this->assertInstanceOf(NullCodec::class, $codec);
-        $this->assertEquals('none', $manager->getDefaulCodec());
+        $this->assertEquals('none', $manager->getDefaultCodec());
     }
 
     /** @test */
