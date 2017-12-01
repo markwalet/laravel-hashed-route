@@ -16,22 +16,22 @@ class NullCodec implements Codec
     /**
      * Generate a hash for a given id.
      *
-     * @param int $id
-     * @return int
+     * @param int|string $key
+     * @return string
      */
-    public function encode(int $id)
+    public function encode($key): string
     {
-        return $id;
+        return $key;
     }
 
     /**
-     * Decode a has back to an id.
+     * Decode a hash back to an id.
      *
-     * @param string|int $hash
-     * @return int|null
+     * @param string $hash
+     * @return int|string|null
      */
-    public function decode($hash)
+    public function decode(string $hash)
     {
-        return (int) $hash;
+        return $hash;
     }
 }

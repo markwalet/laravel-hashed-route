@@ -40,16 +40,6 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     }
 
     /** @test */
-    public function throws_exception_when_key_type_is_not_an_integer()
-    {
-        $model = TestModel::make(113);
-        $model->setKeyType('string');
-
-        $this->expectException(UnsupportedKeyTypeException::class);
-        $model->hashed_key;
-    }
-
-    /** @test */
     public function rendering_route_will_use_a_hash_as_default()
     {
         $model = TestModel::make(143);

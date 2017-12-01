@@ -3,6 +3,7 @@
 namespace MarkWalet\LaravelHashedRoute\Codecs;
 
 use Hashids\Hashids;
+use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
 
 class HashidsCodec implements Codec
 {
@@ -32,22 +33,27 @@ class HashidsCodec implements Codec
     /**
      * Generate a hash for a given id.
      *
-     * @param int $id
-     * @return int|string
+     * @param int $key
+     * @return string
+     * @throws \MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException
      */
-    public function encode(int $id)
+    public function encode($key): string
     {
-        return $this->hashids->encode($id);
+        // Only supports integer keys.
+        if (is_int($key) === false) {
+            throw new UnsupportedKeyTypeException("Hashids codec only supports integer key types.");
+        }
+
+        return $this->hashids->encode($key);
     }
 
     /**
      * Decode a has back to an id.
      *
-     * @param string|int $hash
-     * @return int
-     * @return int|null
+     * @param string $hash
+     * @return int|string|null
      */
-    public function decode($hash)
+    public function decode(string $hash)
     {
         $results = $this->hashids->decode($hash);
 

@@ -5,6 +5,8 @@ namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
+use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
+use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use PHPUnit\Framework\TestCase;
 
 class HashidsCodecTest extends TestCase
@@ -59,6 +61,15 @@ class HashidsCodecTest extends TestCase
         $hash = $generator->encode(14);
 
         $this->assertRegExp('/^[A-Z]*$/', $hash);
+    }
+
+    /** @test */
+    public function throws_exception_when_key_type_is_not_an_integer()
+    {
+        $codec = new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 10]);
+
+        $this->expectException(UnsupportedKeyTypeException::class);
+        $codec->encode('non-integer');
     }
 
     /** @test */

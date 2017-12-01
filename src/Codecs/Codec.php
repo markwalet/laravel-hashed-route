@@ -14,16 +14,16 @@ interface Codec
     /**
      * Generate a hash for a given id.
      *
-     * @param int $id
-     * @return int|string
+     * @param int|string $key
+     * @return string
      */
-    public function encode(int $id);
+    public function encode($key): string;
 
     /**
-     * Decode a has back to an id.
+     * Decode a hash back to an id.
      *
-     * @param string|int $hash
-     * @return int|null
+     * @param string $hash
+     * @return int|string|null
      */
-    public function decode($hash);
+    public function decode(string $hash);
 }

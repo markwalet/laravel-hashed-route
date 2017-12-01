@@ -36,17 +36,6 @@ trait HasHashedRouteKey
     }
 
     /**
-     * Retrieve the model for a bound value.
-     *
-     * @param  mixed $value
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
-    public function resolveRouteBinding($value)
-    {
-        return $this->where($this->getRouteKeyName(), $this->getCodec()->decode($value))->first();
-    }
-
-    /**
      * Get the route key for the model.
      *
      * @return string
@@ -71,14 +60,9 @@ trait HasHashedRouteKey
      * Get the hashed key attribute.
      *
      * @return int|string
-     * @throws \MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException
      */
     public function getHashedKeyAttribute()
     {
-        if ($this->getKeyType() !== 'int') {
-            throw new UnsupportedKeyTypeException("Only integers are supported as key type.");
-        }
-
         return $this->getCodec()->encode($this->getKey());
     }
 
