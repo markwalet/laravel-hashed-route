@@ -76,15 +76,23 @@ class HashedRouteManagerTest extends LaravelTestCase
     {
         $codec = $this->createMock(Codec::class);
         $codec->expects($this->exactly(2))->method('encode');
+        $codec->expects($this->exactly(2))->method('decode');
         $factory = $this->createMock(CodecFactory::class);
         $factory->method('make')->withAnyParameters()->willReturn($codec);
         $this->app->bind(CodecFactory::class, function() use($factory) {
             return $factory;
         });
+        /**
+         * @var HashedRouteManager $manager
+         * @var Codec $codec
+         */
+        $manager = $this->app->make(HashedRouteManager::class);
+        $codec = $this->app->make(Codec::class);
 
-        $this->app->make(HashedRouteManager::class)->encode(12);
-        $this->app->make(Codec::class)->encode(12);
-
+        $managerEncoded = $manager->encode(12);
+        $codecEncoded = $codec->encode(12);
+        $manager->decode($managerEncoded);
+        $codec->decode($codecEncoded);
     }
 
     /** @test */

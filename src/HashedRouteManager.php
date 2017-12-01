@@ -6,6 +6,13 @@ use Illuminate\Contracts\Foundation\Application;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
 use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 
+/**
+ * Class HashedRouteManager
+ *
+ * @method string encode($key)
+ * @method int|string|null decode(string $hash)
+ * @package MarkWalet\LaravelHashedRoute
+ */
 class HashedRouteManager
 {
     /**
