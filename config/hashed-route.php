@@ -44,6 +44,7 @@ return [
 
         // See https://github.com/jenssegers/optimus for valid configuration options
         'optimus' => [
+            'driver' => 'optimus',
             'prime' => env('OPTIMUS_PRIME'),
             'inverse' => env('OPTIMUS_INVERSE'),
             'random' => env('OPTIMUS_RANDOM'),

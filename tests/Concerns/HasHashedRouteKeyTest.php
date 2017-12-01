@@ -3,6 +3,7 @@
 namespace MarkWalet\LaravelHashedRoute\Tests\Concerns;
 
 use Illuminate\Support\Facades\Route;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;
@@ -10,22 +11,26 @@ use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;
 class HasHashedRouteKeyTest extends LaravelTestCase
 {
     /** @test */
-    public function has_hashed_key_attribute()
+    public function has_route_key_attribute()
     {
+        $codec = $this->createMock(Codec::class);
+        $this->app->bind(Codec::class, $codec);
         $model = TestModel::make(112);
 
-        $this->assertNotNull($model->hashed_key);
+        $routeKey = $model->getRouteKey();
+
+        $this->assertNotNull($routeKey);
     }
 
     /** @test */
     public function can_specify_codec_for_a_model()
     {
         $hashidsModel = TestModel::make(230)->setCodec('hashids');
-        $nullModel  = TestModel::make(230)->setCodec('none');
+        $nullModel  = TestModel::make(230)->setCodec('optimus');
 
         $this->assertEquals('hashids', $hashidsModel->getCodecName());
-        $this->assertEquals('none', $nullModel->getCodecName());
-        $this->assertNotEquals($nullModel->hashed_key, $hashidsModel->hashed_key);
+        $this->assertEquals('optimus', $nullModel->getCodecName());
+        $this->assertNotEquals($nullModel->getRouteKey(), $hashidsModel->getRouteKey());
     }
 
     /** @test */

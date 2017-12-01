@@ -35,13 +35,26 @@ trait HasHashedRouteKey
     }
 
     /**
-     * Get the route key for the model.
+     * Get the value of the model's route key.
      *
-     * @return string
+     * @return mixed
      */
-    public function getRouteKeyName()
+    public function getRouteKey()
     {
-        return 'hashed_key';
+        return $this->getCodec()->encode(parent::getRouteKey());
+    }
+
+    /**
+     * Retrieve the model for a bound value.
+     *
+     * @param  mixed $value
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
+    public function resolveRouteBinding($value)
+    {
+        $value = $this->getCodec()->decode($value);
+
+        return $this->where($this->getRouteKeyName(), $value)->first();
     }
 
     /**
@@ -53,16 +66,6 @@ trait HasHashedRouteKey
     public static function resolveCodec(string $codec = null)
     {
         return static::$routeManager->codec($codec);
-    }
-
-    /**
-     * Get the hashed key attribute.
-     *
-     * @return int|string
-     */
-    public function getHashedKeyAttribute()
-    {
-        return $this->getCodec()->encode($this->getKey());
     }
 
     /**
