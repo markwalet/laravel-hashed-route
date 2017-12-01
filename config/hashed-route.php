@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'hashids',
+    'default' => env('HASHED_ROUTE_DRIVER', 'hashids'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ return [
 
         'hashids' => [
             'driver' => 'hashids',
-            'salt' => env('HASHED_ROUTE_SALT'),
+            'salt' => env('HASHIDS_SALT'),
             'minimum_length' => 15,
             'alphabet' => null,
             //'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
