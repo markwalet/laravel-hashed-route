@@ -42,10 +42,11 @@ return [
             //'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
         ],
 
+        // See https://github.com/jenssegers/optimus for valid configuration options
         'optimus' => [
-            'prime' => 1892610877,
-            'inverse' => 1196358677,
-            'random' => 311869201,
+            'prime' => env('OPTIMUS_PRIME'),
+            'inverse' => env('OPTIMUS_INVERSE'),
+            'random' => env('OPTIMUS_RANDOM'),
         ],
 
         'base64' => [

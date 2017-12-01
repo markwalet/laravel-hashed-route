@@ -21,5 +21,8 @@
     </filter>
     <php>
         <env name="HASHED_ROUTE_SALT" value="testSalt"/>
+        <env name="OPTIMUS_PRIME" value="1892610877"/>
+        <env name="OPTIMUS_INVERSE" value="1196358677"/>
+        <env name="OPTIMUS_RANDOM" value="311869201"/>
     </php>
 </phpunit>
