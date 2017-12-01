@@ -31,7 +31,7 @@ class Base64Codec implements Codec
      * @param int|string $key
      * @return string
      */
-    public function encode($key): string
+    public function encode($key)
     {
         return base64_encode($this->salt . $key);
     }
@@ -42,7 +42,7 @@ class Base64Codec implements Codec
      * @param string $hash
      * @return int|string|null
      */
-    public function decode(string $hash)
+    public function decode($hash)
     {
         $result = base64_decode($hash, true);
 

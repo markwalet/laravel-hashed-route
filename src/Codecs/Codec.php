@@ -15,15 +15,15 @@ interface Codec
      * Generate a hash for a given id.
      *
      * @param int|string $key
-     * @return string
+     * @return int|string
      */
-    public function encode($key): string;
+    public function encode($key);
 
     /**
      * Decode a hash back to an id.
      *
-     * @param string $hash
+     * @param int|string $hash
      * @return int|string|null
      */
-    public function decode(string $hash);
+    public function decode($hash);
 }

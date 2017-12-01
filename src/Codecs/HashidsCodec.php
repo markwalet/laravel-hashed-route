@@ -35,7 +35,7 @@ class HashidsCodec implements Codec
      *
      * @param int $key
      * @return string
-     * @throws \MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException
+     * @throws UnsupportedKeyTypeException
      */
     public function encode($key): string
     {
@@ -53,7 +53,7 @@ class HashidsCodec implements Codec
      * @param string $hash
      * @return int|string|null
      */
-    public function decode(string $hash)
+    public function decode($hash)
     {
         $results = $this->hashids->decode($hash);
 

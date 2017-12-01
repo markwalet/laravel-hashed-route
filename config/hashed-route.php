@@ -24,7 +24,7 @@ return [
     | There is an example of options for every driver to make development
     | easy. You can change them however you like.
     |
-    | Supported drivers are: 'null', 'hashids', 'base64'.
+    | Supported drivers are: 'null', 'hashids', 'optimus', 'base64'.
     |
     */
 
@@ -42,9 +42,15 @@ return [
             //'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
         ],
 
+        'optimus' => [
+            'prime' => 1892610877,
+            'inverse' => 1196358677,
+            'random' => 311869201,
+        ],
+
         'base64' => [
             'driver' => 'base64',
-            'salt' => env('HASHED_ROUTE_SALT')
-        ]
+            'salt' => env('HASHED_ROUTE_SALT'),
+        ],
     ],
 ];

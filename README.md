@@ -46,4 +46,4 @@ In this file you can configure different codecs for the encoding and decoding of
 
 You can override this configuration by setting the `codec` property on your model.
 
-The supported codec drivers are `null`, `hashids` & `base64`. Use the `null` driver if you want to disable route key hashing.
+The supported codec drivers are: `null`, `hashids`, `optimus` & `base64`. Use the `null` driver if you want to disable route key hashing.

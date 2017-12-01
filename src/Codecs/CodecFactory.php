@@ -51,6 +51,8 @@ class CodecFactory
                 return new NullCodec($config);
             case 'hashids':
                 return new HashidsCodec($config);
+            case 'optimus':
+                return new OptimusCodec($config);
             case 'base64':
                 return new Base64Codec($config);
             default:

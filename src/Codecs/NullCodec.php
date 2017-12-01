@@ -17,9 +17,9 @@ class NullCodec implements Codec
      * Generate a hash for a given id.
      *
      * @param int|string $key
-     * @return string
+     * @return int|string
      */
-    public function encode($key): string
+    public function encode($key)
     {
         return $key;
     }
@@ -27,10 +27,10 @@ class NullCodec implements Codec
     /**
      * Decode a hash back to an id.
      *
-     * @param string $hash
-     * @return int|string|null
+     * @param int|string $hash
+     * @return int|string
      */
-    public function decode(string $hash)
+    public function decode($hash)
     {
         return $hash;
     }
