@@ -20,6 +20,6 @@
         </whitelist>
     </filter>
     <php>
-        <env name="HASHIDS_SALT" value="testSalt"/>
+        <env name="HASHED_ROUTE_SALT" value="testSalt"/>
     </php>
 </phpunit>

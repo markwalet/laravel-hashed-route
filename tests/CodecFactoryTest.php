@@ -3,6 +3,7 @@
 namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 
 use InvalidArgumentException;
+use MarkWalet\LaravelHashedRoute\Codecs\Base64Codec;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
@@ -28,6 +29,16 @@ class CodecFactoryTest extends TestCase
         $codec = $factory->make(['driver' => 'hashids', 'minimum_length' => 10, 'salt' => 'randomSalt']);
 
         $this->assertInstanceOf(HashidsCodec::class, $codec);
+    }
+
+    /** @test */
+    public function can_create_a_base64_driver()
+    {
+        $factory = new CodecFactory;
+
+        $codec = $factory->make(['driver' => 'base64', 'salt' => 'randomSalt']);
+
+        $this->assertInstanceOf(Base64Codec::class, $codec);
     }
 
     /** @test */

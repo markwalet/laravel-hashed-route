@@ -51,6 +51,8 @@ class CodecFactory
                 return new NullCodec($config);
             case 'hashids':
                 return new HashidsCodec($config);
+            case 'base64':
+                return new Base64Codec($config);
             default:
                 throw new MissingDriverException("Driver {$driver} is not supported for codec.");
         }

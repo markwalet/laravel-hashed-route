@@ -24,6 +24,8 @@ return [
     | There is an example of options for every driver to make development
     | easy. You can change them however you like.
     |
+    | Supported drivers are: 'null', 'hashids', 'base64'.
+    |
     */
 
     'codecs' => [
@@ -34,10 +36,15 @@ return [
 
         'hashids' => [
             'driver' => 'hashids',
-            'salt' => env('HASHIDS_SALT'),
+            'salt' => env('HASHED_ROUTE_SALT'),
             'minimum_length' => 15,
             'alphabet' => null,
             //'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
         ],
+
+        'base64' => [
+            'driver' => 'base64',
+            'salt' => env('HASHED_ROUTE_SALT')
+        ]
     ],
 ];
