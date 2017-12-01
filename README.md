@@ -1,9 +1,9 @@
 # Laravel hashed route
 
-[![Build Status](https://travis-ci.org/markwalet/laravel-hashed-route.svg?branch=master)](https://travis-ci.org/markwalet/environment-manager)
-[![Total Downloads](https://poser.pugx.org/markwalet/laravel-hashed-route/downloads)](https://packagist.org/packages/markwalet/environment-manager)
-[![Latest Stable Version](https://poser.pugx.org/markwalet/laravel-hashed-route/v/stable)](https://packagist.org/packages/markwalet/environment-manager)
-[![License](https://poser.pugx.org/markwalet/laravel-hashed-route/license)](https://packagist.org/packages/markwalet/environment-manager)
+[![Build Status](https://travis-ci.org/markwalet/laravel-hashed-route.svg?branch=master)](https://travis-ci.org/markwalet/laravel-hashed-route)
+[![Total Downloads](https://poser.pugx.org/markwalet/laravel-hashed-route/downloads)](https://packagist.org/packages/markwalet/laravel-hashed-route)
+[![Latest Stable Version](https://poser.pugx.org/markwalet/laravel-hashed-route/v/stable)](https://packagist.org/packages/markwalet/laravel-hashed-route)
+[![License](https://poser.pugx.org/markwalet/laravel-hashed-route/license)](https://packagist.org/packages/markwalet/laravel-hashed-route)
 
 A Laravel package that replaces the default route model binding for a safer version.
 
