@@ -2,8 +2,10 @@
 
 namespace MarkWalet\LaravelHashedRoute\Tests\Concerns;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;
@@ -55,5 +57,24 @@ class HasHashedRouteKeyTest extends LaravelTestCase
         $url = route('test', $model);
 
         $this->assertEquals('http://localhost/test/' . $expectedHash, $url);
+    }
+
+    /** @test */
+    public function automatic_route_model_binding_decodes_hash()
+    {
+        $codec = $this->createMock(Codec::class);
+        $codec->method('decode')->with('EncodedHash')->willReturn(142);
+        $factory = $this->createMock(CodecFactory::class);
+        $factory->method('make')->withAnyParameters()->willReturn($codec);
+        $this->app->bind(CodecFactory::class, function() use($factory) {
+            return $factory;
+        });
+        $model = TestModel::make(142);
+
+        try {
+            $model->resolveRouteBinding('EncodedHash');
+        } catch(QueryException $e) {
+            $this->assertContains(142, $e->getBindings());
+        }
     }
 }
