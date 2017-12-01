@@ -1,6 +1,6 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\Transformers;
+namespace MarkWalet\LaravelHashedRoute\Codecs;
 
 
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
@@ -19,7 +19,7 @@ trait RequiresConfigurationKeys
         $name = $config['name'] ?? 'undefined';
         foreach($required as $r) {
             if (isset($config[$r]) === false) {
-                throw new InvalidArgumentException("Missing '{$r}' for {$name} transformer configuration");
+                throw new InvalidArgumentException("Missing '{$r}' for {$name} codec configuration");
             }
         }
     }

@@ -4,8 +4,8 @@ namespace MarkWalet\LaravelHashedRoute;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
-use MarkWalet\LaravelHashedRoute\Transformers\TransformerFactory;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 
 class HashedRouteServiceProvider extends ServiceProvider
 {
@@ -27,18 +27,18 @@ class HashedRouteServiceProvider extends ServiceProvider
     private function registerHashedRouteServices()
     {
         // Bind factory to application.
-        $this->app->bind(TransformerFactory::class, TransformerFactory::class);
+        $this->app->bind(CodecFactory::class, CodecFactory::class);
 
         // Bind hashed route manager to application.
         $this->app->bind(HashedRouteManager::class, function ($app) {
             /** @var Application $app */
-            return new HashedRouteManager($app, $this->app->make(TransformerFactory::class));
+            return new HashedRouteManager($app, $this->app->make(CodecFactory::class));
         });
 
-        // Bind default transformer to application.
-        $this->app->bind(Transformer::class, function ($app) {
+        // Bind default codec to application.
+        $this->app->bind(Codec::class, function ($app) {
             /** @var Application $app */
-            return $app->make(HashedRouteManager::class)->transformer();
+            return $app->make(HashedRouteManager::class)->codec();
         });
     }
 

@@ -21,11 +21,11 @@ trait HasHashedRouteKey
     protected static $routeManager;
 
     /**
-     * The transformer name.
+     * The codec name.
      *
      * @var string
      */
-    protected $transformer;
+    protected $codec;
 
     /**
      * Boot the trait up.
@@ -43,7 +43,7 @@ trait HasHashedRouteKey
      */
     public function resolveRouteBinding($value)
     {
-        return $this->where($this->getRouteKeyName(), $this->getTransformer()->decode($value))->first();
+        return $this->where($this->getRouteKeyName(), $this->getCodec()->decode($value))->first();
     }
 
     /**
@@ -59,12 +59,12 @@ trait HasHashedRouteKey
     /**
      * Resolve a connection instance.
      *
-     * @param string|null $transformer
-     * @return \MarkWalet\LaravelHashedRoute\Transformers\Transformer
+     * @param string|null $codec
+     * @return \MarkWalet\LaravelHashedRoute\Codecs\Codec
      */
-    public static function resolveTransformer(string $transformer = null)
+    public static function resolveCodec(string $codec = null)
     {
-        return static::$routeManager->transformer($transformer);
+        return static::$routeManager->codec($codec);
     }
 
     /**
@@ -79,38 +79,38 @@ trait HasHashedRouteKey
             throw new UnsupportedKeyTypeException("Only integers are supported as key type.");
         }
 
-        return $this->getTransformer()->encode($this->getKey());
+        return $this->getCodec()->encode($this->getKey());
     }
 
     /**
-     * Get the hashed route transformer for the model
+     * Get the hashed route codec for the model
      *
-     * @return \MarkWalet\LaravelHashedRoute\Transformers\Transformer
+     * @return \MarkWalet\LaravelHashedRoute\Codecs\Codec
      */
-    protected function getTransformer()
+    protected function getCodec()
     {
-        return static::resolveTransformer($this->getTransformerName());
+        return static::resolveCodec($this->getCodecName());
     }
 
     /**
-     * Get the transformer name.
+     * Get the codec name.
      *
      * @return string
      */
-    public function getTransformerName(): string
+    public function getCodecName(): string
     {
-        return $this->transformer ?? config('hashed-route.default');
+        return $this->codec ?? config('hashed-route.default');
     }
 
     /**
-     * Set the transformer name.
+     * Set the codec name.
      *
-     * @param string $transformer
+     * @param string $codec
      * @return $this
      */
-    public function setTransformer(string $transformer = null)
+    public function setCodec(string $codec = null)
     {
-        $this->transformer = $transformer;
+        $this->codec = $codec;
 
         return $this;
     }

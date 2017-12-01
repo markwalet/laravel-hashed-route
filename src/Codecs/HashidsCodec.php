@@ -1,10 +1,10 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\Transformers;
+namespace MarkWalet\LaravelHashedRoute\Codecs;
 
 use Hashids\Hashids;
 
-class HashidsTransformer implements Transformer
+class HashidsCodec implements Codec
 {
     use RequiresConfigurationKeys;
 
@@ -16,7 +16,7 @@ class HashidsTransformer implements Transformer
     private $hashids;
 
     /**
-     * Boot the transformer up.
+     * Boot the codec up.
      *
      * @param array $config
      */

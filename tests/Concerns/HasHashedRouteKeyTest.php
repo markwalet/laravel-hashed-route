@@ -19,24 +19,24 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     }
 
     /** @test */
-    public function can_specify_transformer_for_a_model()
+    public function can_specify_codec_for_a_model()
     {
-        $hashidsModel = TestModel::make(230)->setTransformer('hashids');
-        $nullModel  = TestModel::make(230)->setTransformer('none');
+        $hashidsModel = TestModel::make(230)->setCodec('hashids');
+        $nullModel  = TestModel::make(230)->setCodec('none');
 
-        $this->assertEquals('hashids', $hashidsModel->getTransformerName());
-        $this->assertEquals('none', $nullModel->getTransformerName());
+        $this->assertEquals('hashids', $hashidsModel->getCodecName());
+        $this->assertEquals('none', $nullModel->getCodecName());
         $this->assertNotEquals($nullModel->hashed_key, $hashidsModel->hashed_key);
     }
 
     /** @test */
-    public function default_transformer_is_applied_when_transformer_is_not_specified_in_model()
+    public function default_codec_is_applied_when_codec_is_not_specified_in_model()
     {
         $this->app['config']['hashed-route.default'] = 'default-option';
         $model = TestModel::make(113);
-        $model->setTransformer(null);
+        $model->setCodec(null);
 
-        $this->assertEquals('default-option', $model->getTransformerName());
+        $this->assertEquals('default-option', $model->getCodecName());
     }
 
     /** @test */
@@ -53,10 +53,10 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     public function rendering_route_will_use_a_hash_as_default()
     {
         $model = TestModel::make(143);
-        $model->setTransformer('hashids');
+        $model->setCodec('hashids');
         Route::get('test/{testModel}', function() {
         })->name('test');
-        $expectedHash = $this->app->make(HashedRouteManager::class)->transformer('hashids')->encode(143);
+        $expectedHash = $this->app->make(HashedRouteManager::class)->codec('hashids')->encode(143);
 
         $url = route('test', $model);
 

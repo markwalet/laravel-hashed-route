@@ -1,11 +1,11 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\Transformers;
+namespace MarkWalet\LaravelHashedRoute\Codecs;
 
-interface Transformer
+interface Codec
 {
     /**
-     * Boot the transformer up.
+     * Boot the codec up.
      *
      * @param array $config
      */

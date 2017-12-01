@@ -42,6 +42,6 @@ The default configuration is defined in `hashed-route.php`. If you want to edit 
 php artisan vendor:publish --provider="MarkWalet\LaravelHashedRoute\HashedRouteServiceProvider"
 ```
 
-In this file you can configure different transformers for the encoding and decoding of keys, as well as setting a default configuration.
+In this file you can configure different codecs for the encoding and decoding of keys, as well as setting a default configuration.
 
-You can override this configuration by setting the `transformer` property on your model.
+You can override this configuration by setting the `codec` property on your model.

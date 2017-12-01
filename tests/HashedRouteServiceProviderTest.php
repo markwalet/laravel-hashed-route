@@ -3,10 +3,10 @@
 namespace MarkWalet\LaravelHashedRoute\Tests;
 
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
-use MarkWalet\LaravelHashedRoute\Transformers\HashidsTransformer;
-use MarkWalet\LaravelHashedRoute\Transformers\NullTransformer;
-use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
-use MarkWalet\LaravelHashedRoute\Transformers\TransformerFactory;
+use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
+use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 
 class HashedRouteServiceProviderTest extends LaravelTestCase
 {
@@ -19,21 +19,21 @@ class HashedRouteServiceProviderTest extends LaravelTestCase
     }
 
     /** @test */
-    public function binds_transformer_to_the_application()
+    public function binds_codec_to_the_application()
     {
         $bindings = $this->app->getBindings();
 
-        $this->assertArrayHasKey(Transformer::class, $bindings);
+        $this->assertArrayHasKey(Codec::class, $bindings);
     }
 
     /** @test */
-    public function transformer_resolves_to_default_transformer()
+    public function codec_resolves_to_default_codec()
     {
         $this->app['config']['hashed-route.default'] = 'none';
-        $this->app['config']['hashed-route.transformers.none'] = ['driver' => 'null'];
+        $this->app['config']['hashed-route.codecs.none'] = ['driver' => 'null'];
 
-        $transformer = $this->app->make(Transformer::class);
+        $codec = $this->app->make(Codec::class);
 
-        $this->assertInstanceOf(NullTransformer::class, $transformer);
+        $this->assertInstanceOf(NullCodec::class, $codec);
     }
 }

@@ -1,24 +1,24 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\Tests\Transformers;
+namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
-use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
-use MarkWalet\LaravelHashedRoute\Transformers\HashidsTransformer;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
 use PHPUnit\Framework\TestCase;
 
-class HashidsTransformerTest extends TestCase
+class HashidsCodecTest extends TestCase
 {
-    use TransformerTests;
+    use CodecTests;
 
     /**
      * Get a hash generator instance.
      *
-     * @return Transformer
+     * @return Codec
      */
     public function generator()
     {
-        return new HashidsTransformer(['salt' => 'randomSalt', 'minimum_length' => 10]);
+        return new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 10]);
     }
 
     /** @test */
@@ -26,7 +26,7 @@ class HashidsTransformerTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        new HashidsTransformer(['minimum_length' => 100]);
+        new HashidsCodec(['minimum_length' => 100]);
     }
 
     /** @test */
@@ -34,13 +34,13 @@ class HashidsTransformerTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        new HashidsTransformer(['salt' => 'randomSalt']);
+        new HashidsCodec(['salt' => 'randomSalt']);
     }
 
     /** @test */
     public function hash_is_at_least_as_long_as_the_given_minimum_length()
     {
-        $generator = new HashidsTransformer(['salt' => 'randomSalt', 'minimum_length' => 100]);
+        $generator = new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 100]);
 
         $hash = $generator->encode(1);
 
@@ -50,7 +50,7 @@ class HashidsTransformerTest extends TestCase
     /** @test */
     public function can_configure_alphabet()
     {
-        $generator = new HashidsTransformer([
+        $generator = new HashidsCodec([
             'salt' => 'randomSalt',
             'minimum_length' => 100,
             'alphabet' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -64,9 +64,9 @@ class HashidsTransformerTest extends TestCase
     /** @test */
     public function invalid_hash_decodes_to_null()
     {
-        $transformer = new HashidsTransformer(['salt' => 'randomSalt', 'minimum_length' => 10]);
+        $codec = new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 10]);
 
-        $result = $transformer->decode('rubbish');
+        $result = $codec->decode('rubbish');
 
         $this->assertNull($result);
     }

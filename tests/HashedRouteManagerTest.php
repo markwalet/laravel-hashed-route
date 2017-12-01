@@ -4,46 +4,46 @@ namespace MarkWalet\LaravelHashedRoute\Tests;
 
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
-use MarkWalet\LaravelHashedRoute\Transformers\HashidsTransformer;
-use MarkWalet\LaravelHashedRoute\Transformers\NullTransformer;
-use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
-use MarkWalet\LaravelHashedRoute\Transformers\TransformerFactory;
+use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
+use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 
 class HashedRouteManagerTest extends LaravelTestCase
 {
     /** @test */
-    public function can_get_a_transformer()
+    public function can_get_a_codec()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
 
-        $transformer = $manager->transformer('none');
+        $codec = $manager->codec('none');
 
-        $this->assertInstanceOf(NullTransformer::class, $transformer);
+        $this->assertInstanceOf(NullCodec::class, $codec);
     }
 
     /** @test */
-    public function can_set_default_transformer()
+    public function can_set_default_codec()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
 
-        $manager->setDefaultTransformer('none');
-        $transformer = $manager->transformer();
+        $manager->setDefaultCodec('none');
+        $codec = $manager->codec();
 
-        $this->assertInstanceOf(NullTransformer::class, $transformer);
-        $this->assertEquals('none', $manager->getDefaultTransformer());
+        $this->assertInstanceOf(NullCodec::class, $codec);
+        $this->assertEquals('none', $manager->getDefaulCodec());
     }
 
     /** @test */
-    public function returns_default_transformer_from_config_file_when_no_default_is_set()
+    public function returns_default_codec_from_config_file_when_no_default_is_set()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
 
-        $transformer = $manager->transformer();
+        $codec = $manager->codec();
 
-        $this->assertInstanceOf(HashidsTransformer::class, $transformer);
+        $this->assertInstanceOf(HashidsCodec::class, $codec);
     }
 
     /** @test */
@@ -53,55 +53,55 @@ class HashedRouteManagerTest extends LaravelTestCase
         $manager = $this->app->make(HashedRouteManager::class);
 
         $this->expectException(MissingConfigurationException::class);
-        $manager->transformer('non-existing');
+        $manager->codec('non-existing');
     }
 
     /** @test */
-    public function adds_initialized_transformers_to_transformers_list()
+    public function adds_initialized_codecs_to_codecs_list()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
 
-        $nullTransformer = $manager->transformer('none');
-        $hashidsTransformer = $manager->transformer('hashids');
-        $transformers = $manager->getTransformers();
+        $nullCodec = $manager->codec('none');
+        $hashidsCodec = $manager->codec('hashids');
+        $codecs = $manager->getCodecs();
 
-        $this->assertCount(2, $transformers);
-        $this->assertContains($nullTransformer, $transformers);
-        $this->assertContains($hashidsTransformer, $transformers);
+        $this->assertCount(2, $codecs);
+        $this->assertContains($nullCodec, $codecs);
+        $this->assertContains($hashidsCodec, $codecs);
     }
 
     /** @test */
-    public function passes_methods_through_to_default_transformer()
+    public function passes_methods_through_to_default_codec()
     {
-        $transformer = $this->createMock(Transformer::class);
-        $transformer->expects($this->exactly(2))->method('encode');
-        $factory = $this->createMock(TransformerFactory::class);
-        $factory->method('make')->withAnyParameters()->willReturn($transformer);
-        $this->app->bind(TransformerFactory::class, function() use($factory) {
+        $codec = $this->createMock(Codec::class);
+        $codec->expects($this->exactly(2))->method('encode');
+        $factory = $this->createMock(CodecFactory::class);
+        $factory->method('make')->withAnyParameters()->willReturn($codec);
+        $this->app->bind(CodecFactory::class, function() use($factory) {
             return $factory;
         });
 
         $this->app->make(HashedRouteManager::class)->encode(12);
-        $this->app->make(Transformer::class)->encode(12);
+        $this->app->make(Codec::class)->encode(12);
 
     }
 
     /** @test */
-    public function initializes_the_same_transformer_only_once()
+    public function initializes_the_same_codec_only_once()
     {
-        $mock = $this->createMock(TransformerFactory::class);
-        $this->app->bind(TransformerFactory::class, function() use($mock) {
-            return $mock;
+        $factory = $this->createMock(CodecFactory::class);
+        $this->app->bind(CodecFactory::class, function() use($factory) {
+            return $factory;
         });
-        $mock->expects($this->once())->method('make');
+        $factory->expects($this->once())->method('make');
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
 
-        $manager->transformer('none');
-        $manager->transformer('none');
-        $manager->transformer('none');
+        $manager->codec('none');
+        $manager->codec('none');
+        $manager->codec('none');
 
-        $this->assertCount(1, $manager->getTransformers());
+        $this->assertCount(1, $manager->getCodecs());
     }
 }

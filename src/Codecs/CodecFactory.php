@@ -1,23 +1,23 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\Transformers;
+namespace MarkWalet\LaravelHashedRoute\Codecs;
 
 use InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 
-class TransformerFactory
+class CodecFactory
 {
     /**
-     * Create a new transformer based on the given configuration.
+     * Create a new codec based on the given configuration.
      *
      * @param array $configuration
-     * @return Transformer
+     * @return Codec
      */
-    public function make(array $configuration): Transformer
+    public function make(array $configuration): Codec
     {
         $configuration = $this->parseConfiguration($configuration);
 
-        return $this->createTransformer($configuration['driver'], $configuration);
+        return $this->createCodec($configuration['driver'], $configuration);
     }
 
     /**
@@ -37,22 +37,22 @@ class TransformerFactory
     }
 
     /**
-     * Create a new transformer instance.
+     * Create a new codec instance.
      *
      * @param string $driver
      * @param array $config
-     * @return Transformer
+     * @return Codec
      * @throws MissingDriverException
      */
-    protected function createTransformer(string $driver, array $config): Transformer
+    protected function createCodec(string $driver, array $config): Codec
     {
         switch ($driver) {
             case 'null':
-                return new NullTransformer($config);
+                return new NullCodec($config);
             case 'hashids':
-                return new HashidsTransformer($config);
+                return new HashidsCodec($config);
             default:
-                throw new MissingDriverException("Driver is not supported for transformer.");
+                throw new MissingDriverException("Driver {$driver} is not supported for codec.");
         }
     }
 }

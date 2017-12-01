@@ -1,15 +1,15 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\Tests\Transformers;
+namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 
-use MarkWalet\LaravelHashedRoute\Transformers\Transformer;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 
-trait TransformerTests
+trait CodecTests
 {
     /**
      * Get a hash generator instance.
      *
-     * @return Transformer
+     * @return Codec
      */
     public abstract function generator();
 

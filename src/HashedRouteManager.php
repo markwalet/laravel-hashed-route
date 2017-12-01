@@ -4,7 +4,7 @@ namespace MarkWalet\LaravelHashedRoute;
 
 use Illuminate\Contracts\Foundation\Application;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
-use MarkWalet\LaravelHashedRoute\Transformers\TransformerFactory;
+use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 
 class HashedRouteManager
 {
@@ -16,26 +16,26 @@ class HashedRouteManager
     protected $app;
 
     /**
-     * The transformer factory instance.
+     * The codec factory instance.
      *
-     * @var TransformerFactory
+     * @var CodecFactory
      */
     private $factory;
 
     /**
-     * The active transformer instances.
+     * The active codec instances.
      *
      * @var array
      */
-    protected $transformers = [];
+    protected $codecs = [];
 
     /**
      * HashedRouteManager constructor.
      *
      * @param Application $app
-     * @param TransformerFactory $factory
+     * @param CodecFactory $factory
      */
-    public function __construct(Application $app, TransformerFactory $factory)
+    public function __construct(Application $app, CodecFactory $factory)
     {
         $this->app = $app;
         $this->factory = $factory;
@@ -43,27 +43,27 @@ class HashedRouteManager
 
     /**
      * @param string|null $name
-     * @return \MarkWalet\LaravelHashedRoute\Transformers\Transformer
+     * @return \MarkWalet\LaravelHashedRoute\Codecs\Codec
      */
-    public function transformer(string $name = null)
+    public function codec(string $name = null)
     {
         // Set the name to default when null.
-        $name = $name ?: $this->getDefaultTransformer();
+        $name = $name ?: $this->getDefaulCodec();
 
         // Get configuration.
         $configuration = $this->configuration($name);
 
-        // Return the transformer when it is already initialized.
-        if (array_key_exists($name, $this->transformers)) {
-            return $this->transformers[$name];
+        // Return the codec when it is already initialized.
+        if (array_key_exists($name, $this->codecs)) {
+            return $this->codecs[$name];
         }
 
-        // Make and return new instance of transformer.
-        return $this->transformers[$name] = $this->factory->make($configuration);
+        // Make and return new instance of codec.
+        return $this->codecs[$name] = $this->factory->make($configuration);
     }
 
     /**
-     * Get the configuration for a transformer.
+     * Get the configuration for a codec.
      *
      * @param  string $name
      * @return array
@@ -71,50 +71,50 @@ class HashedRouteManager
      */
     protected function configuration(string $name)
     {
-        // Get list of transformers.
-        $transformers = $this->app['config']['hashed-route.transformers'];
+        // Get a list of codecs.
+        $codecs = $this->app['config']['hashed-route.codecs'];
 
         // Throw exception when configuration is not found.
-        if (array_key_exists($name, $transformers) === false) {
-            throw new MissingConfigurationException("Transformer [$name] not configured.");
+        if (array_key_exists($name, $codecs) === false) {
+            throw new MissingConfigurationException("Codec [$name] not configured.");
         }
 
-        // Return transformer configuration.
-        return array_add($transformers[$name], 'name', $name);
+        // Return codec configuration.
+        return array_add($codecs[$name], 'name', $name);
     }
 
     /**
-     * Get the default transformer name.
+     * Get the default codec name.
      *
      * @return string
      */
-    public function getDefaultTransformer(): string
+    public function getDefaulCodec(): string
     {
         return $this->app['config']['hashed-route.default'];
     }
 
     /**
-     * Set the default transformer name.
+     * Set the default codec name.
      *
      * @param string $name
      */
-    public function setDefaultTransformer(string $name)
+    public function setDefaultCodec(string $name)
     {
         $this->app['config']['hashed-route.default'] = $name;
     }
 
     /**
-     * Return all of the created transformers.
+     * Return all of the created codecs.
      *
      * @return array
      */
-    public function getTransformers()
+    public function getCodecs()
     {
-        return $this->transformers;
+        return $this->codecs;
     }
 
     /**
-     * Dynamically pass methods to the default transformer.
+     * Dynamically pass methods to the default codec.
      *
      * @param  string $method
      * @param  array $parameters
@@ -122,6 +122,6 @@ class HashedRouteManager
      */
     public function __call($method, $parameters)
     {
-        return $this->transformer()->$method(...$parameters);
+        return $this->codec()->$method(...$parameters);
     }
 }
