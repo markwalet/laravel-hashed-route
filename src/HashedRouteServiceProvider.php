@@ -50,7 +50,7 @@ class HashedRouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/hashed-route.php' => config_path('hashed-route.php'),
+            __DIR__.'/../config/hashed-route.php' => config_path('hashed-route.php'),
         ]);
     }
 }
