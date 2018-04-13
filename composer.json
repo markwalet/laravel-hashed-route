@@ -1,7 +1,7 @@
 {
     "name": "markwalet/laravel-hashed-route",
     "description": "A Laravel package that replaces the default route model binding for a safer version.",
-    "keywords": ["laravel", "id", "hash", "url", "security"],
+    "keywords": ["laravel", "hash", "url", "security", "codec"],
     "type": "library",
     "license": "MIT",
     "authors": [
