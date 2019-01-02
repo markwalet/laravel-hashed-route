@@ -23,8 +23,7 @@ matrix:
     env: ILLUMINATE_VERSION=5.7.* PHPUNIT_VERSION=~7.0 COVERAGE=true
 
 before_install: # Update requirements to fit environment variables.
-- cp ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
-- phpenv config-rm xdebug.ini
+- pecl install xdebug
 - composer require "illuminate/support:${ILLUMINATE_VERSION}" --no-update --prefer-dist
 - composer require "orchestra/testbench:${ILLUMINATE_VERSION/5\./3\.}" --no-update --prefer-dist
 - composer require "phpunit/phpunit:${PHPUNIT_VERSION}" --no-update --prefer-dist
