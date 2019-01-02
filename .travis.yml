@@ -1,18 +1,32 @@
 language: php
 
+cache:
+  directories:
+  - $HOME/.cache/pip
+  - $HOME/.composer/cache/files
+  - ${TRAVIS_BUILD_DIR}/travis/extension-cache
+
 php:
-  - 7.0.21
   - 7.1
   - 7.2
+  - 7.3
 
 env:
-  matrix:
-    - COMPOSER_FLAGS="--prefer-lowest"
-    - COMPOSER_FLAGS=""
+  - ILLUMINATE_VERSION=5.5.* PHPUNIT_VERSION=~6.0
+  - ILLUMINATE_VERSION=5.5.* PHPUNIT_VERSION=~6.0
+  - ILLUMINATE_VERSION=5.6.* PHPUNIT_VERSION=~7.0
+  - ILLUMINATE_VERSION=5.7.* PHPUNIT_VERSION=~7.0 COVERAGE=true
 
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+
+before_install:
+- composer require "illuminate/support:${ILLUMINATE_VERSION}" --no-update --prefer-dist
+- composer require "orchestra/testbench:${ILLUMINATE_VERSION/5\./3\.}" --no-update --prefer-dist
+- composer require "phpunit/phpunit:${PHPUNIT_VERSION}" --no-update --prefer-dist
+
+install: travis_retry composer install --no-interaction --prefer-dist
 
 script:
-  - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit "if [ ! -z ${COVERAGE+x} ]; then --coverage-text; fi"
+
+notifications:
+  email: false
