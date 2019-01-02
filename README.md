@@ -1,6 +1,7 @@
 # Laravel hashed route
 
 [![Build Status](https://travis-ci.org/markwalet/laravel-hashed-route.svg?branch=master)](https://travis-ci.org/markwalet/laravel-hashed-route)
+[![Coverage Status](https://coveralls.io/repos/github/markwalet/laravel-hashed-route/badge.svg?branch=master)](https://coveralls.io/github/markwalet/laravel-hashed-route?branch=master)
 [![Total Downloads](https://poser.pugx.org/markwalet/laravel-hashed-route/downloads)](https://packagist.org/packages/markwalet/laravel-hashed-route)
 [![Latest Stable Version](https://poser.pugx.org/markwalet/laravel-hashed-route/v/stable)](https://packagist.org/packages/markwalet/laravel-hashed-route)
 [![License](https://poser.pugx.org/markwalet/laravel-hashed-route/license)](https://packagist.org/packages/markwalet/laravel-hashed-route)
