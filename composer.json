@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0.12",
         "hashids/hashids": "~2.0 || ~3.0",
         "illuminate/config": "~5.5",
         "illuminate/database": "~5.5",
