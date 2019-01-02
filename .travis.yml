@@ -17,13 +17,12 @@ env: # Testing from the latest LTS release to the latest minor version.
   - ILLUMINATE_VERSION=5.7.* PHPUNIT_VERSION=~7.0
 
 matrix:
-  include: # Only run coverage job on PHP 7.3.
+  include: # Only run coverage job on PHP 7.2.
   - name: "Coverage job"
-    php: 7.3
+    php: 7.2
     env: ILLUMINATE_VERSION=5.7.* PHPUNIT_VERSION=~7.0 COVERAGE=true
 
 before_install: # Update requirements to fit environment variables.
-- pecl install xdebug
 - composer require "illuminate/support:${ILLUMINATE_VERSION}" --no-update --prefer-dist
 - composer require "orchestra/testbench:${ILLUMINATE_VERSION/5\./3\.}" --no-update --prefer-dist
 - composer require "phpunit/phpunit:${PHPUNIT_VERSION}" --no-update --prefer-dist
