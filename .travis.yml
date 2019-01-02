@@ -36,7 +36,7 @@ script:
 
 
 after_success:
-- travis_retry php vendor/bin/php-coveralls -x clover.xml -o clover.json
+- php vendor/bin/php-coveralls -v -x clover.xml -o clover.json
 #after_success: sh -c "if [ ! -z ${COVERAGE+x} ]; then travis_retry vendor/bin/php-coveralls -x clover.xml -o clover.json; fi"
 
 notifications:
