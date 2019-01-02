@@ -30,7 +30,7 @@ before_install: # Update requirements to fit environment variables.
 install: travis_retry composer install --no-interaction --prefer-dist
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-clover clover.xml
 
 after_success: sh -c "if [ ! -z ${COVERAGE+x} ]; then php vendor/bin/php-coveralls -x clover.xml -o clover.json; fi"
 
