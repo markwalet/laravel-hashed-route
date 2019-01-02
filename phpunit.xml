@@ -19,6 +19,9 @@
             </exclude>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
     <php>
         <env name="HASHED_ROUTE_DRIVER" value="hashids"/>
         <env name="HASHIDS_SALT" value="testSalt"/>
