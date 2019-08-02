@@ -2,6 +2,9 @@
 
 namespace MarkWalet\LaravelHashedRoute\Concerns;
 
+use Illuminate\Database\Eloquent\Model;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 
 /**
@@ -38,6 +41,7 @@ trait HasHashedRouteKey
      * Get the value of the model's route key.
      *
      * @return mixed
+     * @throws MissingDriverException
      */
     public function getRouteKey()
     {
@@ -47,21 +51,23 @@ trait HasHashedRouteKey
     /**
      * Retrieve the model for a bound value.
      *
-     * @param  mixed $value
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @param mixed $value
+     * @return Model|null
+     * @throws MissingDriverException
      */
     public function resolveRouteBinding($value)
     {
         $value = $this->getCodec()->decode($value);
 
-        return $this->where($this->getRouteKeyName(), $value)->first();
+        return self::query()->where($this->getRouteKeyName(), $value)->first();
     }
 
     /**
      * Resolve a connection instance.
      *
      * @param string|null $codec
-     * @return \MarkWalet\LaravelHashedRoute\Codecs\Codec
+     * @return Codec
+     * @throws MissingDriverException
      */
     public static function resolveCodec(string $codec = null)
     {
@@ -71,7 +77,8 @@ trait HasHashedRouteKey
     /**
      * Get the hashed route codec for the model
      *
-     * @return \MarkWalet\LaravelHashedRoute\Codecs\Codec
+     * @return Codec
+     * @throws MissingDriverException
      */
     protected function getCodec()
     {

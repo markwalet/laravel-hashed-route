@@ -3,9 +3,9 @@
 namespace MarkWalet\LaravelHashedRoute;
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Arr;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
-use MarkWalet\LaravelHashedRoute\CodecFactory;
 
 /**
  * Class HashedRouteManager
@@ -91,7 +91,7 @@ class HashedRouteManager
         }
 
         // Return codec configuration.
-        return array_add($codecs[$name], 'name', $name);
+        return Arr::add($codecs[$name], 'name', $name);
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace MarkWalet\LaravelHashedRoute\Codecs;
 
-use Hashids\Hashids;
 use Jenssegers\Optimus\Optimus;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
 use MarkWalet\LaravelHashedRoute\RequiresConfigurationKeys;
@@ -35,7 +34,7 @@ class OptimusCodec implements Codec
      *
      * @param int $key
      * @return int
-     * @throws \MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException
+     * @throws UnsupportedKeyTypeException
      */
     public function encode($key)
     {
