@@ -3,6 +3,7 @@
 namespace MarkWalet\LaravelHashedRoute;
 
 use Illuminate\Contracts\Foundation\Application;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
 use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
 
@@ -49,8 +50,11 @@ class HashedRouteManager
     }
 
     /**
+     * Create a codec for the given name.
+     *
      * @param string|null $name
-     * @return \MarkWalet\LaravelHashedRoute\Codecs\Codec
+     * @return Codec
+     * @throws Exceptions\MissingDriverException
      */
     public function codec(string $name = null)
     {
@@ -74,7 +78,7 @@ class HashedRouteManager
      *
      * @param  string $name
      * @return array
-     * @throws \MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException
+     * @throws MissingConfigurationException
      */
     protected function configuration(string $name)
     {
@@ -123,9 +127,10 @@ class HashedRouteManager
     /**
      * Dynamically pass methods to the default codec.
      *
-     * @param  string $method
-     * @param  array $parameters
+     * @param string $method
+     * @param array $parameters
      * @return mixed
+     * @throws Exceptions\MissingDriverException
      */
     public function __call($method, $parameters)
     {
