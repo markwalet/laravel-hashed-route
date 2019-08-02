@@ -7,7 +7,7 @@ use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
-use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
+use MarkWalet\LaravelHashedRoute\CodecFactory;
 
 class HashedRouteManagerTest extends LaravelTestCase
 {

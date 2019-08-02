@@ -5,7 +5,7 @@ namespace MarkWalet\LaravelHashedRoute\Tests\Concerns;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
-use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
+use MarkWalet\LaravelHashedRoute\CodecFactory;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;

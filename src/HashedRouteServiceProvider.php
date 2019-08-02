@@ -5,7 +5,7 @@ namespace MarkWalet\LaravelHashedRoute;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
-use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
+use MarkWalet\LaravelHashedRoute\CodecFactory;
 
 class HashedRouteServiceProvider extends ServiceProvider
 {

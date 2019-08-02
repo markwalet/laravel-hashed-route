@@ -5,7 +5,7 @@ namespace MarkWalet\LaravelHashedRoute;
 use Illuminate\Contracts\Foundation\Application;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
-use MarkWalet\LaravelHashedRoute\Codecs\CodecFactory;
+use MarkWalet\LaravelHashedRoute\CodecFactory;
 
 /**
  * Class HashedRouteManager
