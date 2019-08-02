@@ -4,36 +4,24 @@ namespace MarkWalet\LaravelHashedRoute\Codecs;
 
 use InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
+use MarkWalet\LaravelHashedRoute\RequiresConfigurationKeys;
 
 class CodecFactory
 {
+    use RequiresConfigurationKeys;
+
     /**
      * Create a new codec based on the given configuration.
      *
      * @param array $configuration
      * @return Codec
+     * @throws MissingDriverException
      */
     public function make(array $configuration): Codec
     {
-        $configuration = $this->parseConfiguration($configuration);
+        $this->require('driver', $configuration);
 
         return $this->createCodec($configuration['driver'], $configuration);
-    }
-
-    /**
-     * Append name to configuration.
-     *
-     * @param array $config
-     * @return array
-     */
-    protected function parseConfiguration(array $config): array
-    {
-        // Throw exception when no driver is given.
-        if (isset($config['driver']) === false) {
-            throw new InvalidArgumentException("A driver must be specified.");
-        }
-
-        return $config;
     }
 
     /**

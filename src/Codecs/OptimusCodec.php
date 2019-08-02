@@ -5,6 +5,7 @@ namespace MarkWalet\LaravelHashedRoute\Codecs;
 use Hashids\Hashids;
 use Jenssegers\Optimus\Optimus;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
+use MarkWalet\LaravelHashedRoute\RequiresConfigurationKeys;
 
 class OptimusCodec implements Codec
 {

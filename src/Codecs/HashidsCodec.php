@@ -4,6 +4,7 @@ namespace MarkWalet\LaravelHashedRoute\Codecs;
 
 use Hashids\Hashids;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
+use MarkWalet\LaravelHashedRoute\RequiresConfigurationKeys;
 
 class HashidsCodec implements Codec
 {

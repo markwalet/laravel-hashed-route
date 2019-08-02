@@ -2,6 +2,8 @@
 
 namespace MarkWalet\LaravelHashedRoute\Codecs;
 
+use MarkWalet\LaravelHashedRoute\RequiresConfigurationKeys;
+
 class Base64Codec implements Codec
 {
     use RequiresConfigurationKeys;

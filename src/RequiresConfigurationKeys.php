@@ -1,8 +1,8 @@
 <?php
 
-namespace MarkWalet\LaravelHashedRoute\Codecs;
+namespace MarkWalet\LaravelHashedRoute;
 
-
+use Illuminate\Support\Arr;
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 
 trait RequiresConfigurationKeys
@@ -10,16 +10,17 @@ trait RequiresConfigurationKeys
     /**
      * Make sure certain items are present in the configuration array.
      *
-     * @param array $required
      * @param array $config
+     * @param array|string $required
      * @throws InvalidArgumentException
      */
-    protected function require(array $required, array $config)
+    protected function require($required, array $config)
     {
-        $name = $config['name'] ?? 'undefined';
-        foreach($required as $r) {
+        $required = Arr::wrap($required);
+
+        foreach ($required as $r) {
             if (isset($config[$r]) === false) {
-                throw new InvalidArgumentException("Missing '{$r}' for {$name} codec configuration");
+                throw new InvalidArgumentException("Missing `{$r}`-key in configuration");
             }
         }
     }

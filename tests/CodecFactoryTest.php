@@ -2,9 +2,9 @@
 
 namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 
-use InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Codecs\Base64Codec;
 use MarkWalet\LaravelHashedRoute\Codecs\OptimusCodec;
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
