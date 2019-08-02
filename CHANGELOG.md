@@ -1,6 +1,8 @@
 # Release Notes
 
-## [v2.0.0](https://github.com/markwalet/laravel-hashed-route/compare/v1.1.8...master)
+## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.0.0...master)
+
+## [v2.0.0](https://github.com/markwalet/laravel-hashed-route/compare/v1.1.8...2.0.0)
 
 ### Added
 - Added clover coverage to CI.
