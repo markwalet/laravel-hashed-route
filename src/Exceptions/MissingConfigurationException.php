@@ -2,8 +2,8 @@
 
 namespace MarkWalet\LaravelHashedRoute\Exceptions;
 
-use Exception;
+use RunTimeException;
 
-class MissingConfigurationException extends Exception
+class MissingConfigurationException extends RunTimeException
 {
 }

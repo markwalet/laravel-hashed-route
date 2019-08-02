@@ -2,8 +2,8 @@
 
 namespace MarkWalet\LaravelHashedRoute\Exceptions;
 
-use Exception;
+use RuntimeException;
 
-class InvalidArgumentException extends Exception
+class InvalidArgumentException extends RuntimeException
 {
 }
