@@ -2,13 +2,13 @@
 
 namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 
+use MarkWalet\LaravelHashedRoute\CodecFactory;
 use MarkWalet\LaravelHashedRoute\Codecs\Base64Codec;
+use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
+use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\OptimusCodec;
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
-use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
-use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
-use MarkWalet\LaravelHashedRoute\CodecFactory;
 use PHPUnit\Framework\TestCase;
 
 class CodecFactoryTest extends TestCase

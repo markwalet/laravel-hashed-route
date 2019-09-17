@@ -64,6 +64,6 @@ class HashidsCodec implements Codec
             throw new InvalidHashException;
         }
 
-        return (int)$results[0];
+        return (int) $results[0];
     }
 }

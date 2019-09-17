@@ -4,11 +4,11 @@ namespace MarkWalet\LaravelHashedRoute\Tests\Concerns;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
-use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\CodecFactory;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
-use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;
+use MarkWalet\LaravelHashedRoute\Tests\TestModel;
 
 class HasHashedRouteKeyTest extends LaravelTestCase
 {
@@ -28,7 +28,7 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     public function it_can_specify_the_codec_for_a_model()
     {
         $hashidsModel = TestModel::make(230)->setCodec('hashids');
-        $nullModel  = TestModel::make(230)->setCodec('optimus');
+        $nullModel = TestModel::make(230)->setCodec('optimus');
 
         $this->assertEquals('hashids', $hashidsModel->getCodecName());
         $this->assertEquals('optimus', $nullModel->getCodecName());
@@ -50,13 +50,13 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     {
         $model = TestModel::make(143);
         $model->setCodec('hashids');
-        Route::get('test/{testModel}', function() {
+        Route::get('test/{testModel}', function () {
         })->name('test');
         $expectedHash = $this->app->make(HashedRouteManager::class)->codec('hashids')->encode(143);
 
         $url = route('test', $model);
 
-        $this->assertEquals('http://localhost/test/' . $expectedHash, $url);
+        $this->assertEquals('http://localhost/test/'.$expectedHash, $url);
     }
 
     /** @test */
@@ -66,14 +66,14 @@ class HasHashedRouteKeyTest extends LaravelTestCase
         $codec->method('decode')->with('EncodedHash')->willReturn(142);
         $factory = $this->createMock(CodecFactory::class);
         $factory->method('make')->withAnyParameters()->willReturn($codec);
-        $this->app->bind(CodecFactory::class, function() use($factory) {
+        $this->app->bind(CodecFactory::class, function () use ($factory) {
             return $factory;
         });
         $model = TestModel::make(142);
 
         try {
             $model->resolveRouteBinding('EncodedHash');
-        } catch(QueryException $e) {
+        } catch (QueryException $e) {
             $this->assertContains(142, $e->getBindings());
         }
     }

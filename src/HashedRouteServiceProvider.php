@@ -30,13 +30,13 @@ class HashedRouteServiceProvider extends ServiceProvider
 
         // Bind hashed route manager to application.
         $this->app->bind(HashedRouteManager::class, function ($app) {
-            /** @var Application $app */
+            /* @var Application $app */
             return new HashedRouteManager($app, $this->app->make(CodecFactory::class));
         });
 
         // Bind default codec to application.
         $this->app->bind(Codec::class, function ($app) {
-            /** @var Application $app */
+            /* @var Application $app */
             return $app->make(HashedRouteManager::class)->codec();
         });
     }

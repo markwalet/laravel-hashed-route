@@ -2,9 +2,9 @@
 
 namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 
-use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidHashException;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
 use PHPUnit\Framework\TestCase;

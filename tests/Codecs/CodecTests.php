@@ -11,7 +11,7 @@ trait CodecTests
      *
      * @return Codec
      */
-    public abstract function codec();
+    abstract public function codec();
 
     /** @test */
     public function hashes_for_the_same_key_are_the_same()

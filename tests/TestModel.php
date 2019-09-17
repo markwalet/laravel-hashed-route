@@ -22,10 +22,11 @@ class TestModel extends Model
      * @param integer|null $id
      * @return \MarkWalet\LaravelHashedRoute\Tests\TestModel
      */
-    public static function make($id = null) {
+    public static function make($id = null)
+    {
         return new self([
             'id' => $id,
-            'name' => 'Test model name'
+            'name' => 'Test model name',
         ]);
     }
 }

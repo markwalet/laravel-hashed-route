@@ -9,9 +9,8 @@ use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 
 /**
- * Trait HasHashedRouteKey
+ * Trait HasHashedRouteKey.
  *
- * @package MarkWalet\LaravelHashedRoute\Concerns
  * @property string|int hashed_key
  */
 trait HasHashedRouteKey
@@ -80,7 +79,7 @@ trait HasHashedRouteKey
     }
 
     /**
-     * Get the hashed route codec for the model
+     * Get the hashed route codec for the model.
      *
      * @return Codec
      * @throws MissingDriverException

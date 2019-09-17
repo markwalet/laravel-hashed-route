@@ -2,12 +2,12 @@
 
 namespace MarkWalet\LaravelHashedRoute\Tests;
 
-use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
-use MarkWalet\LaravelHashedRoute\HashedRouteManager;
+use MarkWalet\LaravelHashedRoute\CodecFactory;
+use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
 use MarkWalet\LaravelHashedRoute\Codecs\NullCodec;
-use MarkWalet\LaravelHashedRoute\Codecs\Codec;
-use MarkWalet\LaravelHashedRoute\CodecFactory;
+use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
+use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 
 class HashedRouteManagerTest extends LaravelTestCase
 {
@@ -79,7 +79,7 @@ class HashedRouteManagerTest extends LaravelTestCase
         $codec->expects($this->exactly(2))->method('decode');
         $factory = $this->createMock(CodecFactory::class);
         $factory->method('make')->withAnyParameters()->willReturn($codec);
-        $this->app->bind(CodecFactory::class, function() use($factory) {
+        $this->app->bind(CodecFactory::class, function () use ($factory) {
             return $factory;
         });
         /**
@@ -99,7 +99,7 @@ class HashedRouteManagerTest extends LaravelTestCase
     public function it_initializes_the_same_codec_only_once()
     {
         $factory = $this->createMock(CodecFactory::class);
-        $this->app->bind(CodecFactory::class, function() use($factory) {
+        $this->app->bind(CodecFactory::class, function () use ($factory) {
             return $factory;
         });
         $factory->expects($this->once())->method('make');

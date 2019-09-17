@@ -8,11 +8,10 @@ use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
 
 /**
- * Class HashedRouteManager
+ * Class HashedRouteManager.
  *
  * @method string encode($key)
  * @method int|string|null decode(string $hash)
- * @package MarkWalet\LaravelHashedRoute
  */
 class HashedRouteManager
 {
