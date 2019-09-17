@@ -2,6 +2,7 @@
 
 namespace MarkWalet\LaravelHashedRoute\Codecs;
 
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidEncodingException;
 use MarkWalet\LaravelHashedRoute\RequiresConfigurationKeys;
 
 class Base64Codec implements Codec
@@ -35,7 +36,7 @@ class Base64Codec implements Codec
      */
     public function encode($key)
     {
-        return base64_encode($this->salt . $key);
+        return base64_encode($this->salt.$key);
     }
 
     /**
@@ -43,6 +44,7 @@ class Base64Codec implements Codec
      *
      * @param string $hash
      * @return int|string|null
+     * @throws InvalidEncodingException
      */
     public function decode($hash)
     {
@@ -50,7 +52,7 @@ class Base64Codec implements Codec
 
         // Return null if the hash is not valid or when the result doesn't start with the salt.
         if ($result === false || substr($result, 0, strlen($this->salt)) !== $this->salt) {
-            return null;
+            throw new InvalidEncodingException;
         }
 
         return substr($result, strlen($this->salt));
