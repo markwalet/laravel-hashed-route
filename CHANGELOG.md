@@ -1,12 +1,14 @@
 # Release Notes
 
-## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.0.0...master)
+## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.1.0...master)
+
+## [v2.1.0](https://github.com/markwalet/laravel-hashed-route/compare/v2.0.0...v2.1.0)
 
 ### Added
 - Added support for Laravel 6.
 - Added StyleCI integration.
 
-## [v2.0.0](https://github.com/markwalet/laravel-hashed-route/compare/v1.1.8...2.0.0)
+## [v2.0.0](https://github.com/markwalet/laravel-hashed-route/compare/v1.1.8...v2.0.0)
 
 ### Added
 - Added clover coverage to CI.
