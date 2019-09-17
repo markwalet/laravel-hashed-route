@@ -61,6 +61,6 @@ class OptimusCodec implements Codec
             throw new InvalidHashException;
         }
 
-        return $this->optimus->decode($hash);
+        return $this->optimus->decode((int) $hash);
     }
 }
