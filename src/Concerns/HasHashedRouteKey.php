@@ -4,6 +4,7 @@ namespace MarkWalet\LaravelHashedRoute\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidHashException;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 
@@ -57,7 +58,11 @@ trait HasHashedRouteKey
      */
     public function resolveRouteBinding($value)
     {
-        $value = $this->getCodec()->decode($value);
+        try {
+            $value = $this->getCodec()->decode($value);
+        } catch (InvalidHashException $e) {
+            return null;
+        }
 
         return self::query()->where($this->getRouteKeyName(), $value)->first();
     }

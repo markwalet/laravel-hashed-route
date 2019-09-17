@@ -9,7 +9,7 @@ use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 class HashedRouteServiceProviderTest extends LaravelTestCase
 {
     /** @test */
-    public function binds_manager_to_the_application()
+    public function it_binds_manager_to_the_application()
     {
         $bindings = $this->app->getBindings();
 
@@ -17,7 +17,7 @@ class HashedRouteServiceProviderTest extends LaravelTestCase
     }
 
     /** @test */
-    public function binds_codec_to_the_application()
+    public function it_binds_codec_to_the_application()
     {
         $bindings = $this->app->getBindings();
 
@@ -25,7 +25,7 @@ class HashedRouteServiceProviderTest extends LaravelTestCase
     }
 
     /** @test */
-    public function codec_resolves_to_default_codec()
+    public function it_codec_resolves_to_default_codec()
     {
         $this->app['config']['hashed-route.default'] = 'none';
         $this->app['config']['hashed-route.codecs.none'] = ['driver' => 'null'];

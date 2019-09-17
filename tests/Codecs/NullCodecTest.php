@@ -15,7 +15,7 @@ class NullCodecTest extends TestCase
      *
      * @return Codec
      */
-    public function generator()
+    public function codec()
     {
         return new NullCodec;
     }

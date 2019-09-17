@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 class CodecFactoryTest extends TestCase
 {
     /** @test */
-    public function can_create_a_null_driver()
+    public function it_can_create_a_null_driver()
     {
         $factory = new CodecFactory;
 
@@ -26,7 +26,7 @@ class CodecFactoryTest extends TestCase
     }
 
     /** @test */
-    public function can_create_a_hashids_driver()
+    public function it_can_create_a_hashids_driver()
     {
         $factory = new CodecFactory;
 
@@ -40,7 +40,7 @@ class CodecFactoryTest extends TestCase
     }
 
     /** @test */
-    public function can_create_a_optimus_driver()
+    public function it_can_create_an_optimus_driver()
     {
         $factory = new CodecFactory;
 
@@ -55,7 +55,7 @@ class CodecFactoryTest extends TestCase
     }
 
     /** @test */
-    public function can_create_a_base64_driver()
+    public function it_can_create_a_base64_driver()
     {
         $factory = new CodecFactory;
 
@@ -68,7 +68,7 @@ class CodecFactoryTest extends TestCase
     }
 
     /** @test */
-    public function driver_key_is_required_as_configuration_key()
+    public function it_requires_a_driver_in_the_configuration()
     {
         $factory = new CodecFactory;
 
@@ -77,7 +77,7 @@ class CodecFactoryTest extends TestCase
     }
 
     /** @test */
-    public function driver_key_must_be_an_existing_driver()
+    public function it_throws_an_exception_when_the_driver_does_not_exist()
     {
         $factory = new CodecFactory;
 

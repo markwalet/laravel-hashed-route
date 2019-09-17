@@ -5,6 +5,7 @@ namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Codecs\HashidsCodec;
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidHashException;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
 use PHPUnit\Framework\TestCase;
 
@@ -17,13 +18,13 @@ class HashidsCodecTest extends TestCase
      *
      * @return Codec
      */
-    public function generator()
+    public function codec()
     {
         return new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 10]);
     }
 
     /** @test */
-    public function salt_is_required_in_configuration()
+    public function it_requires_a_salt_in_the_configuration()
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -31,7 +32,7 @@ class HashidsCodecTest extends TestCase
     }
 
     /** @test */
-    public function minimum_length_is_required_in_configuration()
+    public function it_requires_a_minimum_length_in_the_configuration()
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -39,7 +40,7 @@ class HashidsCodecTest extends TestCase
     }
 
     /** @test */
-    public function hash_is_at_least_as_long_as_the_given_minimum_length()
+    public function it_requires_that_the_hash_is_at_least_as_long_as_the_given_minimum_length()
     {
         $generator = new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 100]);
 
@@ -49,7 +50,7 @@ class HashidsCodecTest extends TestCase
     }
 
     /** @test */
-    public function can_configure_alphabet()
+    public function it_can_configure_an_alphabet()
     {
         /** @noinspection SpellCheckingInspection */
         $generator = new HashidsCodec([
@@ -64,7 +65,7 @@ class HashidsCodecTest extends TestCase
     }
 
     /** @test */
-    public function throws_exception_when_key_type_is_not_an_integer()
+    public function it_throws_an_exception_when_key_type_is_not_an_integer()
     {
         $codec = new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 10]);
 
@@ -73,8 +74,9 @@ class HashidsCodecTest extends TestCase
     }
 
     /** @test */
-    public function invalid_hash_decodes_to_null()
+    public function it_throws_an_exception_when_it_tries_to_decode_something_invalid()
     {
+        $this->expectException(InvalidHashException::class);
         $codec = new HashidsCodec(['salt' => 'randomSalt', 'minimum_length' => 10]);
 
         $result = $codec->decode('rubbish');

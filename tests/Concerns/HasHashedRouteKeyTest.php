@@ -13,7 +13,7 @@ use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;
 class HasHashedRouteKeyTest extends LaravelTestCase
 {
     /** @test */
-    public function has_route_key_attribute()
+    public function it_has_a_route_key_attribute()
     {
         $codec = $this->createMock(Codec::class);
         $this->app->bind(Codec::class, $codec);
@@ -25,7 +25,7 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     }
 
     /** @test */
-    public function can_specify_codec_for_a_model()
+    public function it_can_specify_the_codec_for_a_model()
     {
         $hashidsModel = TestModel::make(230)->setCodec('hashids');
         $nullModel  = TestModel::make(230)->setCodec('optimus');
@@ -36,7 +36,7 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     }
 
     /** @test */
-    public function default_codec_is_applied_when_codec_is_not_specified_in_model()
+    public function it_has_a_default_codec_when_the_codec_is_not_specified_in_model()
     {
         $this->app['config']['hashed-route.default'] = 'default-option';
         $model = TestModel::make(113);
@@ -46,7 +46,7 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     }
 
     /** @test */
-    public function rendering_route_will_use_a_hash_as_default()
+    public function it_renders_the_route_with_a_hash_by_default()
     {
         $model = TestModel::make(143);
         $model->setCodec('hashids');

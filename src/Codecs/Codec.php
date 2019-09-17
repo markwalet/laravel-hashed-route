@@ -2,6 +2,8 @@
 
 namespace MarkWalet\LaravelHashedRoute\Codecs;
 
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidHashException;
+
 interface Codec
 {
     /**
@@ -23,7 +25,8 @@ interface Codec
      * Decode a hash back to an id.
      *
      * @param int|string $hash
-     * @return int|string|null
+     * @return int|string
+     * @throws InvalidHashException
      */
     public function decode($hash);
 }

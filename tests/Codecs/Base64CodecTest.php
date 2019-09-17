@@ -3,8 +3,9 @@
 namespace MarkWalet\LaravelHashedRoute\Tests\Codecs;
 
 use MarkWalet\LaravelHashedRoute\Codecs\Base64Codec;
-use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidArgumentException;
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidHashException;
 use PHPUnit\Framework\TestCase;
 
 class Base64CodecTest extends TestCase
@@ -16,13 +17,13 @@ class Base64CodecTest extends TestCase
      *
      * @return Codec
      */
-    public function generator()
+    public function codec()
     {
         return new Base64Codec(['salt' => 'randomSalt', 'minimum_length' => 10]);
     }
 
     /** @test */
-    public function salt_is_required_in_configuration()
+    public function it_requires_a_salt_in_configuration()
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -30,8 +31,9 @@ class Base64CodecTest extends TestCase
     }
 
     /** @test */
-    public function invalid_hash_decodes_to_null()
+    public function it_throws_an_exception_when_it_tries_to_decode_something_invalid()
     {
+        $this->expectException(InvalidHashException::class);
         $codec = new Base64Codec(['salt' => 'randomSalt', 'minimum_length' => 10]);
 
         $invalidTokenResult = $codec->decode('$');

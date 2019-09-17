@@ -12,7 +12,7 @@ use MarkWalet\LaravelHashedRoute\CodecFactory;
 class HashedRouteManagerTest extends LaravelTestCase
 {
     /** @test */
-    public function can_get_a_codec()
+    public function it_can_get_a_codec()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
@@ -23,7 +23,7 @@ class HashedRouteManagerTest extends LaravelTestCase
     }
 
     /** @test */
-    public function can_set_default_codec()
+    public function it_can_set_a_default_codec()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
@@ -36,7 +36,7 @@ class HashedRouteManagerTest extends LaravelTestCase
     }
 
     /** @test */
-    public function returns_default_codec_from_config_file_when_no_default_is_set()
+    public function it_returns_a_default_codec_from_config_file_when_no_default_is_set()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
@@ -47,7 +47,7 @@ class HashedRouteManagerTest extends LaravelTestCase
     }
 
     /** @test */
-    public function throws_exception_when_non_configured_driver_is_chosen()
+    public function it_throws_exception_when_non_configured_driver_is_chosen()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
@@ -57,7 +57,7 @@ class HashedRouteManagerTest extends LaravelTestCase
     }
 
     /** @test */
-    public function adds_initialized_codecs_to_codecs_list()
+    public function it_adds_initialized_codecs_to_codecs_list()
     {
         /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
@@ -72,7 +72,7 @@ class HashedRouteManagerTest extends LaravelTestCase
     }
 
     /** @test */
-    public function passes_methods_through_to_default_codec()
+    public function it_passes_methods_through_to_default_codec()
     {
         $codec = $this->createMock(Codec::class);
         $codec->expects($this->exactly(2))->method('encode');
@@ -96,7 +96,7 @@ class HashedRouteManagerTest extends LaravelTestCase
     }
 
     /** @test */
-    public function initializes_the_same_codec_only_once()
+    public function it_initializes_the_same_codec_only_once()
     {
         $factory = $this->createMock(CodecFactory::class);
         $this->app->bind(CodecFactory::class, function() use($factory) {
