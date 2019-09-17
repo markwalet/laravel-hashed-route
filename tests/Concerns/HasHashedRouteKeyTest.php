@@ -6,6 +6,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
 use MarkWalet\LaravelHashedRoute\CodecFactory;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
+use MarkWalet\LaravelHashedRoute\Exceptions\MissingDriverException;
 use MarkWalet\LaravelHashedRoute\HashedRouteManager;
 use MarkWalet\LaravelHashedRoute\Tests\LaravelTestCase;
 use MarkWalet\LaravelHashedRoute\Tests\TestModel;
@@ -60,7 +61,7 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     }
 
     /** @test */
-    public function automatic_route_model_binding_decodes_hash()
+    public function it_decodes_a_hash_automatically_with_route_model_binding()
     {
         $codec = $this->createMock(Codec::class);
         $codec->method('decode')->with('EncodedHash')->willReturn(142);
@@ -75,6 +76,21 @@ class HasHashedRouteKeyTest extends LaravelTestCase
             $model->resolveRouteBinding('EncodedHash');
         } catch (QueryException $e) {
             $this->assertContains(142, $e->getBindings());
+        } catch (MissingDriverException $e) {
+            $this->fail('MissingDriverException was thrown.');
+        }
+    }
+
+    /** @test */
+    public function it_returns_null_when_the_hash_is_invalid()
+    {
+        $model = TestModel::make(143);
+        $model->setCodec('hashids');
+        try {
+            $result = $model->resolveRouteBinding('invalid-key');
+            $this->assertNull($result);
+        } catch (MissingDriverException $e) {
+            $this->fail('MissingDriverException was thrown.');
         }
     }
 }
