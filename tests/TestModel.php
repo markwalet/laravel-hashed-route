@@ -19,7 +19,7 @@ class TestModel extends Model
     /**
      * Make a new testable model wit.
      *
-     * @param integer|null $id
+     * @param int|null $id
      * @return \MarkWalet\LaravelHashedRoute\Tests\TestModel
      */
     public static function make($id = null)

@@ -82,11 +82,9 @@ class HashedRouteManagerTest extends LaravelTestCase
         $this->app->bind(CodecFactory::class, function () use ($factory) {
             return $factory;
         });
-        /**
-         * @var HashedRouteManager $manager
-         * @var Codec $codec
-         */
+        /** @var HashedRouteManager $manager */
         $manager = $this->app->make(HashedRouteManager::class);
+        /** @var Codec $codec */
         $codec = $this->app->make(Codec::class);
 
         $managerEncoded = $manager->encode(12);
