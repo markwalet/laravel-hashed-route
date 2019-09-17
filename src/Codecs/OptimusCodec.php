@@ -3,6 +3,7 @@
 namespace MarkWalet\LaravelHashedRoute\Codecs;
 
 use Jenssegers\Optimus\Optimus;
+use MarkWalet\LaravelHashedRoute\Exceptions\InvalidHashException;
 use MarkWalet\LaravelHashedRoute\Exceptions\UnsupportedKeyTypeException;
 use MarkWalet\LaravelHashedRoute\RequiresConfigurationKeys;
 
@@ -39,8 +40,8 @@ class OptimusCodec implements Codec
     public function encode($key)
     {
         // Only supports integer keys.
-        if (is_numeric($key) === false) {
-            throw new UnsupportedKeyTypeException("Optimus codec only supports integer key types.");
+        if (is_int($key) === false) {
+            throw new UnsupportedKeyTypeException('Optimus codec only supports integer key types.');
         }
 
         return $this->optimus->encode($key);
@@ -51,12 +52,13 @@ class OptimusCodec implements Codec
      *
      * @param int|string $hash
      * @return int
+     * @throws InvalidHashException
      */
     public function decode($hash)
     {
         // Return null if key is not numeric.
-        if (is_numeric($hash) === false) {
-            return null;
+        if (is_int($hash) === false) {
+            throw new InvalidHashException;
         }
 
         return $this->optimus->decode($hash);
