@@ -2,6 +2,12 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.1.0...master)
 
+### Added
+- Added Codecov integration.
+
+### Removed
+- Removed Coveralls integration.
+
 ## [v2.1.0](https://github.com/markwalet/laravel-hashed-route/compare/v2.0.0...v2.1.0)
 
 ### Added
