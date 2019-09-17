@@ -12,6 +12,7 @@ use MarkWalet\LaravelHashedRoute\HashedRouteManager;
  * Trait HasHashedRouteKey.
  *
  * @property string|int hashed_key
+ * @method string getRouteKeyName()
  */
 trait HasHashedRouteKey
 {
