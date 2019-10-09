@@ -8,6 +8,9 @@
 ### Removed
 - Removed Coveralls integration.
 
+### Fixed
+- Fixed the link to travis CI in the README. 
+
 ## [v2.1.0 (2019-09-17)](https://github.com/markwalet/laravel-hashed-route/compare/v2.0.0...v2.1.0)
 
 ### Added
