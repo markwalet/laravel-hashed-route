@@ -15,13 +15,13 @@
     "require": {
         "php": ">=7.0.12",
         "hashids/hashids": "~2.0|~3.0",
-        "illuminate/config": "~5.5|6.*",
-        "illuminate/database": "~5.5|6.*",
-        "illuminate/support": "~5.5|6.*",
+        "illuminate/config": "~5.5|6.*|7.*",
+        "illuminate/database": "~5.5|6.*|7.*",
+        "illuminate/support": "~5.5|6.*|7.*",
         "jenssegers/optimus": "^0.2.3"
     },
     "require-dev": {
-        "orchestra/testbench": "~3.5|4.*",
+        "orchestra/testbench": "~3.5|4.*|5.*",
         "phpunit/phpunit": "~6.0||~7.0||~8.0"
     },
     "autoload": {
