@@ -53,10 +53,11 @@ trait HasHashedRouteKey
      * Retrieve the model for a bound value.
      *
      * @param mixed $value
+     * @param string|null $field
      * @return Model|null
      * @throws MissingDriverException
      */
-    public function resolveRouteBinding($value)
+    public function resolveRouteBinding($value, $field = null)
     {
         try {
             $value = $this->getCodec()->decode($value);
@@ -64,7 +65,7 @@ trait HasHashedRouteKey
             return null;
         }
 
-        return self::query()->where($this->getRouteKeyName(), $value)->first();
+        return self::query()->where($field ?? $this->getRouteKeyName(), $value)->first();
     }
 
     /**

@@ -3,6 +3,9 @@
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.1.0...master)
 
 ### Added
+- Add support for Laravel 7. ([#6](https://github.com/markwalet/laravel-hashed-route/issues/6))
+
+### Added
 - Added Codecov integration.
 
 ### Removed
