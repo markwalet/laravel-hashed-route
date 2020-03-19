@@ -17,9 +17,9 @@ jobs:
         illuminate: [6.*, 7.*]
         stability: [prefer-lowest, prefer-stable]
         include:
-          - laravel: 6.*
+          - illuminate: 6.*
             testbench: 4.*
-          - laravel: 7.*
+          - illuminate: 7.*
             testbench: 5.*
 
     name: P${{ matrix.php }} - I${{ matrix.illuminate }} - ${{ matrix.stability }}
