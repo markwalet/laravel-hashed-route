@@ -4,7 +4,7 @@
 
 ### Added
 - Added Github Actions integration.
-
+ 
 ### Removed
 - Removed support for Laravel 5.
 - Removed Travis integration
