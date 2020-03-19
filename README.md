@@ -5,7 +5,7 @@
 [![StyleCI](https://github.styleci.io/repos/112489141/shield?branch=master)](https://github.styleci.io/repos/112489141)
 [![Total Downloads](https://poser.pugx.org/markwalet/laravel-hashed-route/downloads)](https://packagist.org/packages/markwalet/laravel-hashed-route)
 [![Latest Stable Version](https://poser.pugx.org/markwalet/laravel-hashed-route/v/stable)](https://packagist.org/packages/markwalet/laravel-hashed-route)
-[![License](https://poser.pugx.org/markwalet/laravel-hashed-route/license)](https://packagist.org/packages/markwalet/laravel-hashed-route)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 A Laravel package that replaces the default route model binding for a safer version.
 
