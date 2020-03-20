@@ -2,6 +2,13 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.1.0...master)
 
+### Added
+- Added Github Actions integration.
+ 
+### Removed
+- Removed support for Laravel 5.
+- Removed Travis integration
+
 ## [v2.2.0 (2020-03-12)](https://github.com/markwalet/laravel-hashed-route/compare/v2.1.0...v2.2.0)
 
 ### Added
