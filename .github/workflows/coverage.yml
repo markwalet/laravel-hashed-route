@@ -16,12 +16,12 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.composer/cache/files
-          key: dependencies-php-7.3-illuminate-7.*-composer-${{ hashFiles('composer.json') }}
+          key: dependencies-php-7.4-illuminate-7.*-composer-${{ hashFiles('composer.json') }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.3
+          php-version: 7.4
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
           coverage: xdebug
 
