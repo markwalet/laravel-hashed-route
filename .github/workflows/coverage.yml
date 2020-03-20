@@ -25,8 +25,11 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
           coverage: xdebug
 
+      - name: Install dependencies
+        run: composer update --prefer-dist --no-interaction --no-suggest
+
       - name: Calculate coverage statistics
         run: phpunit --coverage-clover 'clover.xml'
-        
+
       - name: Send coverage statistics
         uses: codecov/codecov-action@v1
