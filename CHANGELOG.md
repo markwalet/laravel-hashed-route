@@ -1,8 +1,8 @@
 # Release Notes
 
-## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v3.0.0...master)
+## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.0...master)
 
-## [v3.0.0 (2020-03-20)](https://github.com/markwalet/laravel-hashed-route/compare/v2.2.0...v3.0.0)
+## [v2.3.0 (2020-03-20)](https://github.com/markwalet/laravel-hashed-route/compare/v2.2.0...v2.3.0)
 
 ### Added
 - Added Github Actions integration.
