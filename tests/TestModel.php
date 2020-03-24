@@ -20,12 +20,13 @@ class TestModel extends Model
      * Make a new testable model wit.
      *
      * @param int|null $id
-     * @return \MarkWalet\LaravelHashedRoute\Tests\TestModel
+     *
+     * @return self
      */
     public static function make($id = null)
     {
         return new self([
-            'id' => $id,
+            'id'   => $id,
             'name' => 'Test model name',
         ]);
     }
