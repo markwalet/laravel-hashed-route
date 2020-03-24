@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.0...master)
+## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.1...master)
+
+## [v2.3.1 (2020-03-24)](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.0...v2.3.1)
+
+### Added
+- Added a `.gitattributes` file to shrink down releases.
 
 ## [v2.3.0 (2020-03-20)](https://github.com/markwalet/laravel-hashed-route/compare/v2.2.0...v2.3.0)
 
