@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.1...master)
+## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.2...master)
+
+## [v2.3.2 (2020-08-04)](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.1...v2.3.2)
+
+### Fixed
+- Fixed a bug in the PHPUnit test suite.
 
 ## [v2.3.1 (2020-03-24)](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.0...v2.3.1)
 
