@@ -17,7 +17,7 @@ class HasHashedRouteKeyTest extends LaravelTestCase
     public function it_has_a_route_key_attribute()
     {
         $codec = $this->createMock(Codec::class);
-        $this->app->bind(Codec::class, $codec);
+        $this->app->instance(Codec::class, $codec);
         $model = TestModel::make(112);
 
         $routeKey = $model->getRouteKey();
