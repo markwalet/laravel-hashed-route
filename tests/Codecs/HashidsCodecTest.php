@@ -61,7 +61,7 @@ class HashidsCodecTest extends TestCase
 
         $hash = $generator->encode(14);
 
-        $this->assertMatchesRegularExpression('/^[A-Z]*$/', $hash);
+        $this->assertRegExp('/^[A-Z]*$/', $hash);
     }
 
     /** @test */
