@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": ">=7.2",
-        "hashids/hashids": "~2.0|~3.0",
+        "hashids/hashids": "3.*|4.*",
         "illuminate/config": "6.*|7.*|8.*",
         "illuminate/database": "6.*|7.*|8.*",
         "illuminate/support": "6.*|7.*|8.*",

@@ -2,6 +2,12 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.4.0...master)
 
+### Added
+- Added Hashids 4 support.
+
+### Removed
+- Added Hashids 2 support.
+
 ## [v2.4.0 (2020-10-21)](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.2...v2.4.0)
 
 ### Added
