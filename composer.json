@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": "~7.2|8.*",
         "hashids/hashids": "3.*|4.*",
         "illuminate/config": "6.*|7.*|8.*",
         "illuminate/database": "6.*|7.*|8.*",

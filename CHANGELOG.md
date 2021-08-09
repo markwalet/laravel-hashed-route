@@ -4,6 +4,7 @@
 
 ### Added
 - Added Hashids 4 support.
+- Added PHP 8 support.
 
 ### Removed
 - Added Hashids 2 support.
