@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [7.2, 7.3, 7.4]
+        php: [7.2, 7.3, 7.4, 8.0]
         illuminate: [6.*, 7.*, 8.*]
         stability: [prefer-lowest, prefer-stable]
         include:
@@ -24,6 +24,8 @@ jobs:
           - illuminate: 8.*
             testbench: 6.*
         exclude:
+          - php: 8.0
+            illuminate: 6.*
           - php: 7.4
             illuminate: 6.*
           - php: 7.2
