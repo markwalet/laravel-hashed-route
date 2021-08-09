@@ -2,6 +2,8 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.4.0...master)
 
+## [v2.5.0 (2021-08-09)](https://github.com/markwalet/laravel-hashed-route/compare/v2.4.0...v2.5.0)
+
 ### Added
 - Added Hashids 4 support.
 - Added PHP 8 support.
@@ -9,12 +11,12 @@
 ### Removed
 - Added Hashids 2 support.
 
-## [v2.4.0 (2020-10-21)](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.2...v2.4.0)
+## [v2.4.0 (2020-10-21)](https://github.com/markwalet/laravel-hashed-route/compare/v.2.3.2...v2.4.0)
 
 ### Added
 - Added Laravel 8 support.
 
-## [v2.3.2 (2020-08-04)](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.1...v2.3.2)
+## [v2.3.2 (2020-08-04)](https://github.com/markwalet/laravel-hashed-route/compare/v2.3.1...v.2.3.2)
 
 ### Fixed
 - Fixed a bug in the PHPUnit test suite.
