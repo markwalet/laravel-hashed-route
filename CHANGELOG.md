@@ -10,6 +10,7 @@
 
 ### Removed
 - Added Hashids 2 support.
+- Removed PHP 7.2 support.
 
 ## [v2.4.0 (2020-10-21)](https://github.com/markwalet/laravel-hashed-route/compare/v.2.3.2...v2.4.0)
 
