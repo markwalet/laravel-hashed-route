@@ -13,11 +13,9 @@
         }
     ],
     "require": {
-        "php": "~7.3|8.*",
+        "php": "~7.4|8.*",
         "hashids/hashids": "3.*|4.*",
-        "illuminate/config": "6.*|7.*|8.*",
-        "illuminate/database": "6.*|7.*|8.*",
-        "illuminate/support": "6.*|7.*|8.*",
+        "laravel/framework": "6.*|7.*|8.*",
         "jenssegers/optimus": "^0.2.3"
     },
     "require-dev": {
