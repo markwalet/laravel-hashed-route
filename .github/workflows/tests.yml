@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
-        php: [7.3, 7.4, 8.0]
+        php: [7.4, 8.0]
         illuminate: [6.*, 7.*, 8.*]
         stability: [prefer-lowest, prefer-stable]
         include:
@@ -23,11 +23,6 @@ jobs:
             testbench: 5.*
           - illuminate: 8.*
             testbench: 6.*
-        exclude:
-          - php: 8.0
-            illuminate: 6.*
-          - php: 7.4
-            illuminate: 6.*
 
     name: P${{ matrix.php }} - I${{ matrix.illuminate }} - ${{ matrix.stability }}
 
@@ -45,16 +40,14 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, gd
           coverage: none
 
       - name: Install dependencies
         run: |
-          composer require "illuminate/config:${{ matrix.illuminate }}" --no-interaction --no-update
-          composer require "illuminate/database:${{ matrix.illuminate }}" --no-interaction --no-update
-          composer require "illuminate/support:${{ matrix.illuminate }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.illuminate }}" --no-interaction --no-update
           composer require "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-suggest
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
         run: vendor/bin/phpunit --verbose

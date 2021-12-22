@@ -2,6 +2,9 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.4.0...master)
 
+## Removed
+- Removed PHP 7.3 support.
+
 ## [v2.5.0 (2021-08-09)](https://github.com/markwalet/laravel-hashed-route/compare/v2.4.0...v2.5.0)
 
 ### Added
