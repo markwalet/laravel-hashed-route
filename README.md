@@ -1,4 +1,4 @@
-![Laravel hashed route](https://banners.beyondco.de/Laravel%20hashed%20route.png?theme=light&packageName=markwalet%2Flaravel-hashed-route&pattern=circuitBoard&style=style_1&description=A+Laravel+package+that+replaces+the+default+route+model+binding+for+a+safer+version.&md=0&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg&widths=200&heights=auto)
+[![Laravel hashed route](https://banners.beyondco.de/Laravel%20hashed%20route.png?theme=light&packageName=markwalet%2Flaravel-hashed-route&pattern=circuitBoard&style=style_1&description=A+Laravel+package+that+replaces+the+default+route+model+binding+for+a+safer+version.&md=0&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg&widths=200&heights=auto)](http://github.com/markwalet/laravel-hashed-route)
 
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Latest Stable Version](https://poser.pugx.org/markwalet/laravel-hashed-route/v/stable)](https://packagist.org/packages/markwalet/laravel-hashed-route)
