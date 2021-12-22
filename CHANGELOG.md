@@ -2,6 +2,8 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.4.0...master)
 
+## [v2.6.0 (2021-12-22)](https://github.com/markwalet/laravel-hashed-route/compare/v2.5.0...v2.6.0)
+
 ## Added
 - Added PHP 8.1 support.
 
