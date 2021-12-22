@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         verbose="true"
-         processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="Hashed Route Test Suite">
-            <directory suffix="Test.php">./tests/</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-            <exclude>
-                <directory suffix=".php">./src/Exceptions/</directory>
-            </exclude>
-        </whitelist>
-    </filter>
-    <php>
-        <env name="HASHED_ROUTE_DRIVER" value="hashids"/>
-        <env name="HASHIDS_SALT" value="testSalt"/>
-        <env name="OPTIMUS_PRIME" value="1892610877"/>
-        <env name="OPTIMUS_INVERSE" value="1196358677"/>
-        <env name="OPTIMUS_RANDOM" value="311869201"/>
-    </php>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" backupGlobals="false" backupStaticAttributes="false" colors="true" verbose="true" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+    <exclude>
+      <directory suffix=".php">./src/Exceptions/</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="Hashed Route Test Suite">
+      <directory suffix="Test.php">./tests/</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="HASHED_ROUTE_DRIVER" value="hashids"/>
+    <env name="HASHIDS_SALT" value="testSalt"/>
+    <env name="OPTIMUS_PRIME" value="1892610877"/>
+    <env name="OPTIMUS_INVERSE" value="1196358677"/>
+    <env name="OPTIMUS_RANDOM" value="311869201"/>
+  </php>
 </phpunit>
