@@ -2,6 +2,9 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.4.0...master)
 
+### Added
+- Added Laravel 9 support.
+
 ## [v2.6.0 (2021-12-22)](https://github.com/markwalet/laravel-hashed-route/compare/v2.5.0...v2.6.0)
 
 ## Added
