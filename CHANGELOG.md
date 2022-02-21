@@ -2,6 +2,9 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.7.0...master)
 
+## Changed
+- Removed application dependency from `HashedRouteManager` ([#18](https://github.com/markwalet/laravel-hashed-route/issues/18))
+
 ## [v2.7.0 (2022-02-08)](https://github.com/markwalet/laravel-hashed-route/compare/v2.6.0...v2.7.0)
 
 ### Added
