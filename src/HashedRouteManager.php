@@ -2,7 +2,6 @@
 
 namespace MarkWalet\LaravelHashedRoute;
 
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Arr;
 use MarkWalet\LaravelHashedRoute\Codecs\Codec;
 use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
