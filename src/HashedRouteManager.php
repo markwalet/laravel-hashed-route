@@ -16,35 +16,26 @@ use MarkWalet\LaravelHashedRoute\Exceptions\MissingConfigurationException;
 class HashedRouteManager
 {
     /**
-     * The application instance.
-     *
-     * @var Application
-     */
-    protected $app;
-
-    /**
      * The codec factory instance.
      *
      * @var CodecFactory
      */
-    private $factory;
+    private CodecFactory $factory;
 
     /**
      * The active codec instances.
      *
      * @var array
      */
-    protected $codecs = [];
+    protected array $codecs = [];
 
     /**
      * HashedRouteManager constructor.
      *
-     * @param Application $app
      * @param CodecFactory $factory
      */
-    public function __construct(Application $app, CodecFactory $factory)
+    public function __construct(CodecFactory $factory)
     {
-        $this->app = $app;
         $this->factory = $factory;
     }
 
@@ -55,7 +46,7 @@ class HashedRouteManager
      * @return Codec
      * @throws Exceptions\MissingDriverException
      */
-    public function codec(string $name = null)
+    public function codec(string $name = null): Codec
     {
         // Set the name to default when null.
         $name = $name ?: $this->getDefaultCodec();
@@ -79,10 +70,10 @@ class HashedRouteManager
      * @return array
      * @throws MissingConfigurationException
      */
-    protected function configuration(string $name)
+    protected function configuration(string $name): array
     {
         // Get a list of codecs.
-        $codecs = $this->app['config']['hashed-route.codecs'];
+        $codecs = Arr::wrap(config('hashed-route.codecs'));
 
         // Throw exception when configuration is not found.
         if (array_key_exists($name, $codecs) === false) {
@@ -100,7 +91,7 @@ class HashedRouteManager
      */
     public function getDefaultCodec(): string
     {
-        return $this->app['config']['hashed-route.default'];
+        return config('hashed-route.default');
     }
 
     /**
@@ -108,17 +99,17 @@ class HashedRouteManager
      *
      * @param string $name
      */
-    public function setDefaultCodec(string $name)
+    public function setDefaultCodec(string $name): void
     {
-        $this->app['config']['hashed-route.default'] = $name;
+        config()->set('hashed-route.default', $name);
     }
 
     /**
-     * Return all of the created codecs.
+     * Return all the created codecs.
      *
      * @return array
      */
-    public function getCodecs()
+    public function getCodecs(): array
     {
         return $this->codecs;
     }
