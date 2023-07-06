@@ -1,6 +1,8 @@
 # Release Notes
 
-## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.7.0...master)
+## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.8.0...master)
+
+## [v2.8.0 (2023-07-06)](https://github.com/markwalet/laravel-hashed-route/compare/v2.7.0...v2.8.0)
 
 ## Added
 - Added support for Laravel 10.
