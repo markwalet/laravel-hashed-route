@@ -2,8 +2,16 @@
 
 ## [Unreleased](https://github.com/markwalet/laravel-hashed-route/compare/v2.7.0...master)
 
+## Added
+- Added support for Laravel 10.
+
 ## Changed
 - Removed application dependency from `HashedRouteManager` ([#18](https://github.com/markwalet/laravel-hashed-route/issues/18))
+
+## Removed
+- Removed Laravel 6 support.
+- Removed Laravel 7 support.
+- Removed PHP 7.4 support.
 
 ## [v2.7.0 (2022-02-08)](https://github.com/markwalet/laravel-hashed-route/compare/v2.6.0...v2.7.0)
 
