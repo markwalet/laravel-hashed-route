@@ -2,7 +2,7 @@
 
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Latest Stable Version](https://poser.pugx.org/markwalet/laravel-hashed-route/v/stable)](https://packagist.org/packages/markwalet/laravel-hashed-route)
-[![Build status](https://img.shields.io/github/workflow/status/markwalet/laravel-hashed-route/tests?style=flat-square&label=tests)](https://github.com/markwalet/laravel-hashed-route/actions)
+[![Build status](https://img.shields.io/github/actions/workflow/status/markwalet/laravel-hashed-route/tests.yml?branch=master)](https://github.com/markwalet/laravel-hashed-route/actions)
 [![Coverage](https://codecov.io/gh/markwalet/laravel-hashed-route/branch/master/graph/badge.svg)](https://codecov.io/gh/markwalet/laravel-hashed-route)
 [![StyleCI](https://github.styleci.io/repos/112489141/shield?branch=master)](https://github.styleci.io/repos/112489141)
 [![Total Downloads](https://poser.pugx.org/markwalet/laravel-hashed-route/downloads)](https://packagist.org/packages/markwalet/laravel-hashed-route)
